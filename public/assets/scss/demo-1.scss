@@ -1,0 +1,34 @@
+/*-----------------------------------------
+    Demo-1
+------------------------------------------*/
+@charset "charset";
+
+// Typography ( Import Typography )
+@import "base/_typography";
+
+// Utilities ( Import Utilities )
+@import "utilities/_variables";
+@import "utilities/_mixins";
+
+// Components ( Import Components )
+@import "components/_common";
+@import "components/_cart-sidebar";
+@import "components/_quickview";
+@import "components/_newsletter-popup";
+@import "components/_tools-sidebar";
+
+// Layouts ( Import Layouts )
+@import "layouts/_header-1";
+@import "layouts/_footer-1";
+@import "layouts/_category-slider";
+@import "layouts/_new-product";
+@import "layouts/_blog";
+@import "layouts/_banners";
+@import "layouts/_service";
+
+// Pages ( Import Pages )
+@import "pages/_demo-1";
+
+// Custom
+@import "custom/_custom-1";
+

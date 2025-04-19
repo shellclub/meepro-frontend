@@ -1,0 +1,181 @@
+interface FashionDeal {
+  category: string;
+  sale: string;
+  image: string;
+  imageTwo: string;
+  newPrice: number;
+  oldPrice: number;
+  title: string;
+  waight: string;
+  rating: any;
+  Status: string;
+  location: string;
+  brand: string;
+  sku: number;
+  quantity: number;
+  color1: number;
+  color2: number;
+  color3: number;
+  size1: string;
+  size2: string;
+  id: number
+}
+
+const fashiondeal: FashionDeal[] = [
+  {
+    title: "Men's wear printed shirt",
+    sale: "Sale",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/35_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/35_2.jpg",
+    category: "Fashion",
+    newPrice: 45.0,
+    oldPrice: 56.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 41,
+    quantity: 1,
+    waight: "",
+    rating: 4,
+    Status: "Available",
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M"
+  },
+  {
+    title: "Princess Look fashion Dress",
+    sale: "Sale",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/34_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/34_2.jpg",
+    category: "women's wear",
+    waight: "",
+    newPrice: 25.0,
+    oldPrice: 30.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 132,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    rating: 3,
+    Status: "Available",
+  },
+  {
+    title: "Women's sport shoes",
+    sale: "",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/45_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/45_1.jpg",
+    category: "Sports",
+    newPrice: 78.0,
+    oldPrice: 85.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 106,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    waight: "",
+    rating: 2,
+    Status: "Available",
+  },
+  {
+    title: "Body Lotion for Dry Skin",
+    sale: "Sale",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/52_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/52_1.jpg",
+    category: "Body Lotion",
+    newPrice: 45.0,
+    oldPrice: 50.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 115,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    waight: "",
+    rating: 3,
+    Status: "Out Of Stock",
+  },
+  {
+    title: "Liquid Matte Lipstick",
+    sale: "New",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/54_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/54_1.jpg",
+    category: "Lipstick",
+    newPrice: 49.0,
+    oldPrice: 65.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 73,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    waight: "",
+    rating: 2,
+    Status: "Available",
+  },
+  {
+    title: "Women's wallet Hand Purse",
+    sale: "New",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/48_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/48_1.jpg",
+    category: "wallet",
+    newPrice: 20.0,
+    oldPrice: 21.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 1,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    waight: "",
+    rating: 2,
+    Status: "Available",
+  },
+  {
+    title: "anti dandruff shampoo",
+    sale: "",
+    image: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/51_1.jpg",
+    imageTwo: process.env.NEXT_PUBLIC_URL + "/assets/img/product-images/51_1.jpg",
+    category: "shampoo",
+    newPrice: 2.0,
+    oldPrice: 3.0,
+    location: "Online",
+    brand: "Bhisma Organice",
+    sku: 23456,
+    id: 114,
+    quantity: 1,
+    color1: 1,
+    color2: 2,
+    color3: 3,
+    size1: "S",
+    size2: "M",
+    waight: "",
+    rating: 2,
+    Status: "Out Of Stock",
+  },
+];
+
+export default fashiondeal;

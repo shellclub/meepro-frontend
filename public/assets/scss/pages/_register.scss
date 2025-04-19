@@ -1,0 +1,158 @@
+/*-------------------------------------------------
+  Register Page CSS
+---------------------------------------------------*/
+.gi-register-wrapper {
+  max-width: 934px;
+  margin: 0 auto 0;
+  .gi-register-container {
+    border: 1px solid $border-color-grey;
+    padding: 30px;
+    text-align: left;
+    background-color: $white;
+    border-radius: $main-border-radius;
+    .gi-register-form {
+      .gi-register-wrap {
+        width: 100%;
+        padding: 0 15px;
+      }
+      .gi-register-wrap.gi-register-half {
+        width: 50%;
+      }
+      form {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -15px;
+      }
+      label {
+        margin-bottom: 9px;
+        color: $title-color;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+      input {
+        width: 100%;
+        background-color: transparent;
+        color: $text-color;
+        font-size: 14px;
+        padding: 0 15px;
+        width: 300;
+        outline: none;
+        border-radius: $main-border-radius;
+        &::placeholder {
+          color: $text-color !important;
+        }
+      }
+
+      input:not(:invalid) {
+				border: 1px solid $border-color-grey;
+				
+			}
+      textarea {
+        width: 100%;
+        background-color: transparent;
+        color: $text-color;
+        font-size: 14px;
+        padding: 0 15px;
+        width: 300;
+        outline: none;
+        border-radius: $main-border-radius;
+        &::placeholder {
+          color: $text-color !important;
+        }
+      }
+      textarea:not(:invalid) {
+				border: 1px solid $border-color-grey;
+				
+			}
+      .gi-register-fp {
+        label {
+          margin-bottom: 0;
+          a {
+            color: $title-color;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0px;
+          }
+        }
+      }
+      .gi-rg-select-inner {
+        width: 300;
+        height: 50px;
+        padding: 0;
+        border: 1px solid $border-color-grey;
+        // &:not( .is-invalid ){
+        //   border: 1px solid $border-color-grey;
+        // }
+        
+        // margin-bottom: 30px;
+        position: relative;
+        display: flex;
+        border-radius: $main-border-radius;
+        font-size: 14px;
+        select {
+          padding: 0 15px;
+          appearance: none;
+          outline: 0;
+          box-shadow: none;
+          background: $white;
+          background-image: none;
+          flex: 1;
+          padding: 0 10px;
+          color: $text-color;
+          font-weight: 300;
+          cursor: pointer;
+        }
+        select:not(.form-select:invalid) {
+          border: 0 !important;
+        }
+        select:not(:invalid) {
+          border: 1px solid $border-color-grey;
+        }
+        &::after {
+          content: '\f107';
+          position: absolute;
+          font-family: $gIcons;
+          top: 0;
+          right: 0;
+          padding: 0 10px;
+          cursor: pointer;
+          pointer-events: none;
+          font-size: 24px;
+          display: flex;
+          height: 50px;
+          line-height: 1;
+          justify-content: center;
+          align-items: center;
+          color: $text-color;
+        }
+      }
+     
+      .gi-register-wrap.gi-recaptcha {
+        display: flex;
+        justify-content: center;
+      }
+      .gi-register-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        button {
+          padding: 8px 15px;
+        }
+        span {
+          color: $text-color;
+          font-size: 14px;
+          a {
+            margin-left: 10px;
+            color: $title-color;
+            &:hover {              
+              color: $main-primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

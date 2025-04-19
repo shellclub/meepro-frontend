@@ -1,0 +1,60 @@
+/* catalog-single-vendor */
+.gi-single-vendor {
+    .gi-vendor-dashboard-sort-card {
+        margin: 30px 0 0 0;
+    }
+}
+.gi-page-description{
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    background-color: #f8f8fb;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: $text-color;
+    font-size: 15px;
+    line-height: 28px;
+    border: 1px solid $eee;
+    border-radius: $main-border-radius;
+    padding: 30px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    h5.gi-desc-title{
+        font-weight: 700;
+        text-transform: capitalize;
+        color: $title-color;
+    }
+    p{
+        margin-bottom: 0;
+    }
+    img {
+        width: 80px;
+        margin-right: 30px;
+    }
+}
+
+.vendor-card-height{
+    min-height: 100%;
+}
+
+.gi-catalog-ratings{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $text-color;
+    justify-content: center;
+    padding: 15px;
+    border: 1px solid $eee;
+    border-radius: $main-border-radius;
+    h6{
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $text-color;
+    }
+    p{
+        margin-bottom: 0;
+        color: $text-color-999;
+    }
+}

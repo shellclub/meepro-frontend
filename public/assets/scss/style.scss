@@ -1,0 +1,91 @@
+@charset "charset";
+/*--------------------------------------------------------------------------------- 
+Item Name: Grabit - Multipurpose eCommerce React NextJs Template.
+Author: Maraviya Infotech
+Version: 1.1.0
+Copyright 2025
+-----------------------------------------------------------------------------------
+
+/*---------------------------------------------------------------------------------
+    Included CSS INDEX
+-----------------------------------------------------------------------------------
+
+01. Typography
+02. Components
+    - Common
+    - Breadcrumb
+    - Cart-sidebar
+    - Quickview
+    - Tools Sidebar
+
+03. Layout 
+    - Header Section
+    - Footer section
+    - Category Section
+    - New product
+    - Blog
+    - Banner Section
+    - Service
+    - Shop Sidebar
+
+04. Pages
+    - About us Page
+    - Contact us Page
+    - Cart Page
+    - Checkout Page 
+    - Compare Page
+    - Faq Page
+    - Login Page
+    - Register Page
+    - Track Order Page 
+    - Term Page
+    - Shop Page    
+    - Single Product Page
+    - Wishlist
+
+-----------------------------------------------------------------------------------*/
+
+// Typography ( Import Typography )
+@import "base/_typography";
+
+// Utilities ( Import Utilities )
+@import "utilities/_variables";
+@import "utilities/_mixins";
+
+// Components ( Import Components )
+@import "components/_common";
+@import "components/_breadcrumb";
+@import "components/_cart-sidebar";
+@import "components/_quickview";
+@import "components/_tools-sidebar";
+
+// Layouts ( Import Layouts )
+@import "layouts/_header-1";
+@import "layouts/_footer-1";
+@import "layouts/_category-slider";
+@import "layouts/_new-product";
+@import "layouts/_blog";
+@import "layouts/_banners";
+@import "layouts/_service";
+@import "layouts/_shop-sidebar";
+
+// Pages ( Import Pages )
+@import "pages/_about-us";
+@import "pages/_contact-us";
+@import "pages/_catalog-single-vendor";
+@import "pages/_cart-page";
+@import "pages/_checkout-page";
+@import "pages/_compare";
+@import "pages/_faq";
+@import "pages/_login";
+@import "pages/_register";
+@import "pages/_track-order";
+@import "pages/_term-and-policy";
+@import "pages/_shop-page";
+@import "pages/_single-product-page";
+@import "pages/_vendor-dashboard";
+@import "pages/_vendor-list";
+@import "pages/_vendor-profile";
+@import "pages/_vendor-settings";
+@import "pages/_vendor-uploads";
+@import "pages/_wishlist";

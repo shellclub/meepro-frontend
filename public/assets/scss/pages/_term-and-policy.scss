@@ -1,0 +1,36 @@
+/*-------------------------------------------------
+  Terms Condition & Privacy Policy Page CSS
+---------------------------------------------------*/
+.gi-terms-conditions, .gi-privacy-policy {
+	.gi-common-wrapper {
+		padding: 30px;
+		border: 1px solid $border-color-grey;
+		max-width: 1140px;
+		margin: 0 auto;
+		background-color: $white;
+		border-radius: $main-border-radius;
+	}
+	.gi-cgi-block {
+		h5 {
+			margin-bottom: 10px;
+			font-size: 18px;
+			font-weight: 600;  
+			color: $main-secondary-color;  
+		}
+		p {
+			margin-bottom: 30px;
+			color: $text-color;
+			font-size: 14px;
+			font-weight: 400;
+			b {
+				font-weight: 500;
+				color: $main-secondary-color;
+			}
+		}
+		&:last-child {
+			p {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

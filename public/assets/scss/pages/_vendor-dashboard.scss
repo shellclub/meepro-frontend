@@ -1,0 +1,342 @@
+/* vendor-dashboard */
+.gi-border-box {
+    border: 1px solid $vendor-border-color;
+    border-radius: $main-border-radius;
+}
+
+.gi-vendor-block-items {
+    padding: 0 15px;
+    .gi-vendor-item-side-img{
+        padding-bottom: 10px;
+        img{
+            width: 100%;
+        }
+    }
+    ul {
+        li {
+            transition: all 0.3s ease-in-out;
+            padding: 13px 0 10px 0;
+            &:not(:last-child) {
+                border-bottom: 1px solid $vendor-border-color;
+            }
+            a {
+                width: 100%;
+                display: block;
+                color: $text-color;
+                font-weight: 400;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.gi-vendor-dashboard-sort-card {
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #f8f8fb;
+    border: 1px solid $eee !important;
+    position: relative;
+    overflow: hidden;
+    border-radius: $main-border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h5 {
+        margin-bottom: 5px;
+        font-size: 17px;
+        text-transform: capitalize;
+        font-family: sans-serif;
+        font-weight: 400;
+        color: $text-color;
+        text-align: center;
+    }
+    span {
+        color: $text-color;
+        text-align: center;
+    }
+    h3 {
+        margin: 0;
+        line-height: 24px;
+        font-weight: 800;
+        color: $title-color;
+        span {
+            position: absolute;
+            font-size: 15px;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+    }
+}
+
+.gi-vendor-profile-card {
+    border: 1px solid $eee;
+    border-radius: $main-border-radius;
+}
+
+.gi-vendor-dashboard-card {
+    border: 1px solid $eee;
+    border-radius: $main-border-radius;
+    .gi-vendor-card-header {
+        padding: 30px;
+        border-bottom: 1px solid $eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h5 {
+            margin: 0;
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: 700;
+            color: $title-color;
+        }
+        .gi-header-btn {
+            .gi-btn {
+                height: 30px;
+                margin-left: 5px;
+                line-height: 31px;
+            }
+        }
+    }
+}
+
+.gi-btn-one {
+    @include ease3;
+    transition: all 0.3s ease;
+    margin: 0 2px;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: $white;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: $main-primary-color;
+    cursor: pointer;
+    border-radius: $main-border-radius;
+    i {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &:hover {
+        background-color: $main-secondary-color;
+        color: $white;
+    }
+}
+
+.gi-two-remove {
+    @include ease3;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 2px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: $white;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background: #e9abab;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+    border-radius: $main-border-radius;
+    &:hover {
+        background-color: $main-secondary-color;
+        color: $white;
+    }
+}
+
+.gi-vendor-card-body {
+    padding: 30px;
+    .gi-vendor-card-table {
+        overflow-y: hidden;
+        .gi-vender-table {
+            @include custom-scroll-bar;
+            table {
+                min-width: 600px;
+            }
+            thead {
+                tr {
+                    th {
+                        font-size: 14px;
+                        font-weight: 600;
+                        background-color: #f8f8fb;
+                        color: $text-color;
+                        border-color: $ddd !important;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    th {
+                        span {
+                            height: 70px;
+                            padding: 14px 0 !important;
+                            display: flex;
+                            align-items: center;
+                            font-weight: 500;
+                            font-size: 15px;
+                            color: $title-color;
+                        }
+                    }
+                    td {
+                        .avl {
+                            color: #8bd38b;
+                        }
+                        .out {
+                            color: #e9abab;
+                        }
+                        span {
+                            padding: 14px 0 !important;
+                            display: flex;
+                            align-items: center;
+                            height: 70px;
+                            font-size: 14px;
+                        }
+                        color: $text-color;
+                        border-color: $eee !important;
+                        .prod-img {
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+                }
+            }
+            tfoot {
+                tr {
+                    td.border-color {
+                        height: 50px;
+                        min-width: 100px;
+                        color: $title-color;
+                        font-weight: 400;
+                        border: 0;
+                        font-size: 15px;
+                        span {
+                            strong {
+                                font-weight: 600 !important;
+                            }
+                        }
+                    }
+                    .border-none {
+                        color: $text-color;
+                        border: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.gi-vendor-cover {
+    height: 300px;
+    margin-bottom: 30px;
+    background-image: url("../img/banner/15.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: $main-border-radius;
+    position: relative;
+    .detail {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        position: absolute;
+        left: 30px;
+        bottom: 0;
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: $main-border-radius $main-border-radius 0 0;
+        }
+        .v-detail {
+            max-width: 500px;
+            margin: 0 30px;
+            h5 {
+                margin-bottom: 15px;
+                color: #fff;
+                font-weight: 700;
+            }
+            p {
+                color: #fff;
+            }
+        }
+    }
+}
+.invoice-p-30 {
+    padding: 30px 30px 0 30px;
+    .text-grey-m2 {
+        color: $text-color;
+        font-size: 14px;
+    }
+    .name {
+        color: $title-color;
+        font-weight: 500;
+    }
+}
+.gi-sticky-sidebar {
+    position: sticky;
+    top: 30px;
+}
+/* responsive */
+@media (max-width: 1199px) {
+    .gi-vendor-dashboard-sort-card {
+        h5{
+            font-size: 15px;
+        }
+        span{
+            font-size: 14px;
+        }
+    }
+}
+@media (max-width: 991px) {
+    .gi-vendor-dashboard-sort-card {
+        h5{
+            font-size: 17px;
+        }
+        span{
+            font-size: 16px;
+        }
+    }
+}
+@media (max-width: 575px) {
+    .gi-vendor-card-body {
+        padding: 15px;
+    }
+    .gi-vendor-block-items {
+        padding: 0;
+    }
+    .gi-vendor-cover {
+        height: 400px;
+        .detail {
+            margin: 15px;
+            left: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            img {
+                border-radius: $main-border-radius;
+            }
+            .v-detail {
+                margin: 30px 0 0 0;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 480px) {
+    .gi-page-description {
+        flex-direction: column;
+        img {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+}

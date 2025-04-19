@@ -1,0 +1,279 @@
+@import url("/assets/css/vendor/gicons.css");
+@import url("/assets/css/plugins/animate.css");
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("/assets/css/plugins/swiper-bundle.min.css");
+@import url("/assets/css/plugins/slick.min.css");
+@import url("/assets/css/plugins/nouislider.css");
+@import url("/assets/css/style.css");
+@import url("/assets/css/responsive.css");
+
+@import url("/assets/css/uicons-thin-rounded.css");
+
+.none {
+  display: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.swiper-pagination {
+  width: 100%;
+  bottom: 10px;
+}
+
+.width {
+  min-width: 261px;
+}
+
+.fade-carousel .slide {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-carousel .fade-out {
+  opacity: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+  .gi-col-5 {
+    width: 20% !important;
+    -webkit-box-flex: 0 !important;
+    -ms-flex: 0 0 20% !important;
+    flex: 0 0 20% !important;
+  }
+}
+
+@media only screen and (min-width: 420px) {
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bill-box {
+  padding: 10px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.checkbox.style-c {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox.style-c input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox.style-c input:checked ~ .checkbox__checkmark {
+  background-color: #5caf90;
+}
+
+.checkbox.style-c input:checked ~ .checkbox__checkmark:after {
+  opacity: 1;
+}
+
+.checkbox.style-c .checkbox__checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  transition: background-color 0.25s ease;
+  border-radius: 4px;
+}
+
+.checkbox.style-c .checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.checkbox.style-c .checkbox__body {
+  color: #333;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+/* discount coupon */
+.gi-checkout-coupon {
+  color: blue;
+  text-decoration: underline;
+}
+
+.border {
+  border: 1px solid #ccc;
+}
+
+.p-2 {
+  padding: 0.4rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.bg-blue-500 {
+  background-color: #5caf90;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-green-500 {
+  color: #10b981;
+}
+
+.text-red-500 {
+  color: #ef4444;
+}
+
+.swiper-radius {
+  border-radius: 5px;
+}
+
+.swiper-container .swiper-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.swiper-container .swiper-slide-active {
+  opacity: 1;
+}
+
+.switch {
+  display: inline-block;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch label {
+  display: block;
+  width: 60px;
+  height: 30px;
+  padding: 3px;
+  border-radius: 15px;
+  border: 2px solid #4b5966;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch label::after {
+  content: "";
+  display: inherit;
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+  background: #4b5966;
+  transition: 0.3s;
+}
+
+.switch input:checked ~ label {
+  border-color: #5caf90;
+}
+
+.switch input:checked ~ label::after {
+  translate: 30px 0;
+  background: #5caf90;
+}
+
+.switch input:disabled ~ label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zoom-image-hover {
+  display: flex !important;
+  justify-content: center;
+}
+
+.Toastify__toast-container {
+  width: auto !important;
+  position: fixed !important;
+  right: 15px !important;
+  top: 15px !important;
+  z-index: 99 !important;
+  left: 7px !important;
+}
+
+.Toastify__toast-icon {
+  display: none;
+}
+
+@media only screen and (min-width: 321px) {
+  .Toastify__toast-container {
+    left: auto !important;
+  }
+}
+
+.Toastify__toast-container .Toastify__close-button {
+  display: none;
+}
+
+.Toastify__toast-body div {
+  font-size: 14px;
+  color: #4b5966;
+  line-height: 28px;
+  font-weight: 300;
+  font-family: "Poppins, sans-serif";
+}
+
+.Toastify__toast-body div a {
+  color: #5caf90;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cat-drop h6 {
+  padding: 15px 0 0 0;
+  font-size: 16px;
+  color: #777;
+  font-weight: 600;
+}
+
+.menu-toggle-plus {
+  font-weight: 500;
+  color: #777;
+  font-size: 20px;
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Collapse */
+.height-transition-1s-ease {
+  transition: height 1s ease, opacity 0.5s ease;
+}

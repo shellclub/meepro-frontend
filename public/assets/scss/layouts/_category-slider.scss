@@ -1,0 +1,107 @@
+/*===== Category section css =====*/
+.gi-category-shop {
+  .gi-category-block {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
+.gi-category {
+  .gi-category-block,
+  .gi-category-block-2 {
+    display: flex;
+    .gi-cat-box {
+      @include ease3;
+      padding: 15px;
+      border-radius: $main-border-radius;
+      position: relative;
+      &:hover {
+        &:after {
+          top: 50%;
+        }
+      }
+      &:after {
+        @include ease3;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(360deg, $white, $white, transparent);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      .gi-cat-icon {
+        height: 100%;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $white;
+        position: relative;
+        border-radius: $main-border-radius;
+        box-shadow: 0 5px 15px rgba(88, 110, 125, 0.1);
+        z-index: 5;
+        i {
+          @include ease3;
+          font-size: 40px;
+          margin: 10px 0;
+          color: $main-primary-color;
+          line-height: 0;
+        }
+        img {
+          width: 50px;
+          height: 50px;
+          margin: 10px 0;
+        }
+        .gi-cat-detail {
+          text-align: center;
+          .gi-cat-title {
+            margin: 0;
+            font-size: 15px;
+            line-height: 22px;
+            font-weight: 600;
+            color: $main-secondary-color;
+            font-family: $font-family-title;
+            text-transform: capitalize;
+          }
+          .items {
+            margin: 0;
+            font-size: 13px;
+            line-height: 28px;
+            color: $text-color;
+          }
+        }
+        .gi-lbl {
+          padding: 0 5px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: $main-primary-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 600;
+          border-radius: 0 5px 0 5px;
+        }
+      }
+    }
+    .gi-cat-box-1 {
+      background-color: #fff6ec;
+    }
+    .gi-cat-box-2 {
+      background-color: #e2fde2;
+    }
+    .gi-cat-box-3 {
+      background-color: #ffeae9;
+    }
+    .gi-cat-box-4 {
+      background-color: #fde1f5;
+    }
+    .gi-cat-box-5 {
+      background-color: #ecf0ff;
+    }
+    .gi-cat-box-6 {
+      background-color: #f9f9d9;
+    }
+  }
+}

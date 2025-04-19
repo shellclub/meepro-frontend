@@ -1,0 +1,249 @@
+/* vendor-list */
+.gi-single-vender-table {
+    tbody {
+        tr {
+            border: 1px solid $eee;
+            border-radius: $main-border-radius;
+            td {
+                padding: 30px;
+                img {
+                    height: 100px;
+                    width: 100px;
+                    border: 1px solid $eee;
+                    border-radius: $main-border-radius;
+                }   
+                a {
+                    h6 {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        color: $text-color;
+                    }
+                }
+                h6 {
+                    font-weight: 700;   
+                    text-transform: uppercase;
+                    color: $text-color;
+                }
+                p {
+                    color: $text-color-999;
+                    margin-bottom: 0;
+                }
+                .catalog-detail-card {
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 20px;
+                    border: 1px solid $eee;
+                    border-radius: $main-border-radius;
+                }
+            }
+        }
+    }
+}
+
+.bg-light {
+    background-color: #f7f7f7 !important;
+}
+
+.gi-Track-image-inner {
+    text-align: center;
+    padding-top: 30px;
+    img {
+        width: 150px;
+    }
+}
+
+.gi-vendor-card {
+    .gi-vendor-card-image {
+        img {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 100%;
+        }
+    }
+    .gi-vendor-card-inner {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: 1px solid $eee;
+        padding: 20px 0;
+        .name {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: 16px;
+            color: $title-color;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 0px;
+        }
+        .des {
+            font-size: 14px;
+            line-height: 28px;
+            font-weight: 300;
+            text-align: center;
+            color: $text-color;
+        }
+        .info {
+            text-align: center;
+            margin: 0 !important;
+            .gi-catalog-ratings-info {
+                padding-top: 10px;
+                h6 {
+                    margin-bottom: 0px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: $title-color;
+                }
+                p {
+                    margin-bottom: 0px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+
+.gi-multi-vendor-detail {
+    .gi-page-description-info {
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        border: 1px dotted $eee;
+        border-radius: $main-border-radius;
+        background-color: #f8f8fb;
+
+        .gi-catalog-vendor {
+            width: 100px;
+            display: contents;
+            img {
+                width: 100px;
+                height: 100px;
+                border: 1px solid $eee;
+                border-radius: $main-border-radius;
+            }
+        }
+        .gi-catalog-vendor-info{
+            width: 100%;
+            padding-left: 30px;
+            .vendor-card-height{
+                min-height: 100%;
+                .catalog-detail-card{
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: $white;
+                    justify-content: center;
+                    padding: 20px;
+                    border: 1px solid $eee;
+                    border-radius: $main-border-radius;
+                    h6{
+                        font-size: 16px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                        color: $text-color;
+                    }
+                    p{
+                        margin-bottom: 0;
+                        font-size: 14px;
+                        color: $text-color-999;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+
+    .gi-multi-vendor-detail {
+        .gi-page-description-info {
+            .gi-catalog-vendor-info {
+                .vendor-card-height {
+                    .catalog-detail-card {
+                        h6{
+                            font-size: 13px;
+                        }
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 991px) {
+
+    .gi-multi-vendor-detail {
+        .gi-page-description-info {
+            .gi-catalog-vendor-info {
+                .vendor-card-height {
+                    .catalog-detail-card {
+                        padding: 15px;
+                        h6{
+                            font-size: 16px;
+                        }
+                        p{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .gi-multi-vendor-detail {
+        .gi-page-description-info {
+            .gi-catalog-vendor {
+                img{
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+    }
+    .detail-card-space{
+        margin-top: 24px;
+        &:nth-child(1){
+            margin-top: 0;
+        }
+        &:nth-child(2){
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .gi-multi-vendor-detail {
+        .gi-page-description-info {
+            display: block;
+            .gi-catalog-vendor-info{
+                padding-left: 0;
+            }
+            .gi-catalog-vendor {
+                img{
+                    margin-bottom: 24px;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .detail-card-space{
+        margin-top: 24px;
+        &:nth-child(2){
+            margin-top: 24px;
+        }
+    }
+
+}

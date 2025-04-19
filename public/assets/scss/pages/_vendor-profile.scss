@@ -1,0 +1,25 @@
+/* vendor-profile */
+.gi-vender-about-block {
+    h5 {
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: $title-color;
+    }
+    p {
+        color: $text-color;
+    }
+}
+
+.gi-vendor-card-body {
+    .gi-vendor-heading {
+        display: flex;
+        align-items: center;
+        flex-direction: column;    
+        h5.name {
+            text-transform: capitalize;
+            font-weight: 700;
+            color: $text-color;
+        }
+    }
+}

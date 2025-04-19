@@ -1,0 +1,182 @@
+/*-------------------------------------------------
+   Shop Page CSS
+---------------------------------------------------*/
+.width-100 {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+.width-50 {
+    -webkit-box-flex: 0 !important;
+    -gi-flex: 0 0 auto !important;
+    flex: 0 0 auto !important;
+    width: 50% !important;
+}
+.list-view, .list-view-50 {
+	@include ease3;
+	.gi-product-inner {
+		display: flex;
+		flex-direction: row;
+		.gi-pro-content {
+			border: 0;
+		}
+		.gi-pro-image-outer {
+			max-width: 270px;
+			background: $white;
+			display: flex;
+			align-items: center;
+		}
+		.gi-pro-content {
+			border-left: 1px solid $border-color-grey;
+			justify-content: center;
+			.gi-pro-title {
+				a{
+					font-size: 16px;
+					color: $title-color;
+					font-weight: 20px;
+				}
+			}
+			.gi-info {
+				@include ease3;
+				margin: 5px 0;
+				font-size: 13px;
+				color: $text-color;
+				display: block;
+			}
+		}
+	}
+}
+.gi-shop {
+	.gi-product-content {
+		padding-top: 0;
+	}
+	.gi-pro-list-top {
+		margin-bottom: 30px;
+		align-self: center;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 14px;
+		border: 1px solid $border-color-grey;
+		border-radius: $main-border-radius;
+		.gi-gl-btn {
+			margin-left: 5px;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			.grid-btn {
+				height: 40px;
+				width: 40px;
+				border: 0;
+				border-radius: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: row;
+				i {
+					font-size: 20px;
+					color: $main-secondary-color;
+					line-height: 0;
+				}
+			}
+		}
+		.grid-btn.active {
+			background: $main-primary-color;
+			border: 1px solid $main-primary-color;
+			border-radius: $main-border-radius;
+			i {
+				color: $white;
+			}
+		}
+		.gi-sort-select {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			.sort-by {
+				font-size: 14px;
+				color: $text-color;
+				padding-right: 22px;
+			}
+			.gi-select-inner {
+				position: relative;
+				display: flex;
+				width: 160px;
+				height: 50px;
+				line-height: 1.5;
+				background: $white;
+				overflow: hidden;
+				border-radius: 0;
+				border-left: 1px solid $border-color-grey;
+				&:after {
+					padding: 0 10px;
+					content: "\f107";
+					position: absolute;
+					font-family: "gIcons";
+					top: 50%;
+					right: 0;
+					cursor: pointer;
+					pointer-events: none;
+					font-size: 24px;
+					display: flex;
+					line-height: 1;
+					justify-content: center;
+					align-items: center;
+					color: $text-color;
+					transform: translateY(-50%);
+				}
+				select {
+					appearance: none;
+					outline: 0;
+					box-shadow: none;
+					border: 0 !important;
+					background: $white;
+					background-image: none;
+					flex: 1;
+					padding: 0 10px;
+					color: $text-color;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	.gi-select-bar {
+		margin: -5px -5px 25px -5px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		.gi-select-btn {
+			margin: 5px;
+			padding: 0 10px;
+			border: 1px solid $border-color-grey;
+			border-radius: $main-border-radius;
+			color: $text-color;
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			text-transform: capitalize;
+			.gi-select-cancel {
+				margin-left: 15px;
+				color: #ff8585;
+				font-size: 18px;
+			}
+		}
+	}
+	.gi-select-btn-clear {
+		padding: 0 !important;
+		.gi-select-clear {
+			@include ease3;
+			height: 100%;
+			margin: 0;
+			padding: 3px 10px;
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			background-color: $main-secondary-color;
+			color: $white;
+			border-radius: $main-border-radius;
+			&:hover {
+				color: $white;
+				background-color: $main-primary-color;
+			}
+		}
+	}
+}
+

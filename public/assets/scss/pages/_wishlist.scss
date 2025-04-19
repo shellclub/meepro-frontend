@@ -1,0 +1,147 @@
+/*-------------------------------------------------
+   Wishlist Page CSS
+---------------------------------------------------*/
+.gi-wishlist {
+	.gi-vendor-dashboard-card {
+		border: 1px solid $eee;
+		border-radius: $main-border-radius;
+		overflow-y: auto;
+	}
+	.gi-vendor-card-header {
+		min-width: 700px;
+		padding: 30px;
+		border-bottom: 1px solid $eee;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		h5 {
+			margin: 0;
+			font-size: 18px;
+			text-transform: uppercase;
+			font-weight: 700;
+			color: #777;
+		}
+	}
+	.gi-vendor-card-body {
+		min-width: 700px;
+	}
+	.gi-vendor-card-body {
+		padding: 30px;
+	}
+	.table > :not(:first-child) {
+		border-top: 2px solid #dee2e6;
+	}
+	.gi-table {
+		&:before {
+			content: "";
+		}
+		thead {
+			tr {
+				th {
+					bottom: 0 !important;
+					color: $main-secondary-color;
+					font-size: 15px;
+					font-weight: 500;
+				}
+			}
+		}
+		tbody {
+			tr {
+				th {
+					span {
+						padding: 14px 0 !important;
+    					display: block;
+						color: $text-color;
+					}
+				}
+				td {
+					a {
+						width: 30px;
+						height: 30px;
+						display: inline-flex;
+						align-items: center;
+						justify-content: center;
+						i {
+							line-height: 10px;
+						}
+					}
+					.prod-img {
+						width: 58px;
+						height: 58px;
+					}
+					span {
+						padding: 14px 0 !important;
+    					display: flex;
+						color: $text-color;
+					}
+					.avl {
+						color: $main-primary-color;
+					}
+					.out {
+						color: #e9abab;
+					}
+					.dis {
+						color: $text-color-999;
+						user-select: none;
+					}
+					.btn {
+						width: 30px;
+						height: 30px;
+						margin: 0 3px;
+						padding: 0;
+						font-size: 20px;
+						font-weight: 400;
+						i {
+							width: 16px;
+							color: $white;
+							font-size: 20px;
+						}
+					}
+				}
+			} 
+		}
+	}
+	.gi-product-box.pro-gl-content {
+		position: relative;
+		&:hover {
+			.remove-product {
+				opacity: 1;
+			}
+		}
+	}
+	.remove-product {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 15px;
+		left: 27px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: $title-color;
+		border-radius: 50%;
+		z-index: 12;
+		opacity: 0;
+		i {
+			color: $white;
+			line-height: 10px;
+		}
+	}
+}
+
+
+@media (max-width: 767px) {
+	.gi-wishlist {
+		.gi-table {
+			tbody {
+				tr {
+					td {
+						span {
+							font-size: 14px;
+						}	
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,748 @@
+/*-------------------------------------------------
+  Checkout Page CSS
+---------------------------------------------------*/
+.gi-checkout-section {
+  font-size: 14px;
+  label {
+    margin-bottom: 15px;
+  }
+  [type="radio"] {
+    &:checked {
+      position: relative;
+      opacity: 0;
+      display: none;
+      + {
+        label {
+          position: relative;
+          padding-left: 26px;
+          cursor: pointer;
+          line-height: 16px;
+          display: inline-block;
+          color: $text-color;
+          letter-spacing: 0;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ddd;
+            border-radius: 100%;
+            background: #ffffff;
+            border: 1px solid $main-primary-color;
+          }
+          &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: $main-primary-color;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+      }
+    }
+    &:not(:checked) {
+      position: relative;
+      opacity: 0;
+      display: none;
+      + {
+        label {
+          position: relative;
+          padding-left: 26px;
+          cursor: pointer;
+          line-height: 16px;
+          display: inline-block;
+          color: $text-color;
+          letter-spacing: 0;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ddd;
+            border-radius: 100%;
+            background: #ffffff;
+          }
+          &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: $main-primary-color;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+          }
+        }
+      }
+    }
+  }
+  }
+  .gi-checkout-wrap {
+    padding: 30px;
+    border: 1px solid $border-color-grey;
+    background-color: $white;
+    border-radius: $main-border-radius;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 25px;
+      position: relative;
+      display: block;
+      color: $title-color;
+      font-family: 'Montserrat';
+      line-height: 1;
+    }
+    .gi-check-login {
+      h3 {
+        margin-bottom: 22px;
+      }
+    }
+    .gi-check-bill {
+      h3 {
+        margin-bottom: 26px;
+        line-height: 1.2;
+      }
+      .gi-check-subtitle {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .gi-sidebar-wrap {
+    border: 1px solid $border-color-grey;
+    background-color: #f8f8fb;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: $main-border-radius;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .gi-sb-block-content {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+    .gi-sb-title {
+      h3 {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0;
+        position: relative;
+        color: $main-secondary-color;
+        .gi-sidebar-res {
+          position: absolute;
+          right: 0;
+          top: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .gi-sb-block-content.gi-sidebar-dropdown {
+    margin-top: 15px;
+  }
+  .gi-checkout-pay-wrap {
+    [type="radio"] {
+      &:checked {
+        + {
+          label {
+            margin-bottom: 30px;
+          }
+        }
+      }
+      &:not(:checked) {
+        + {
+          label {
+            margin-bottom: 6px;
+          }
+        }
+      }
+    }
+  }
+  .gi-new-product {
+    margin-top: 2px;
+  }
+  .gi-check-subtitle {
+    margin-bottom: 14px;
+    color: $title-color;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+  .gi-checkout-block.gi-check-new {
+    margin-bottom: 30px;
+  }
+  .gi-new-option {
+    span {
+      margin-right: 45px;
+    }
+  }
+  .gi-checkout-rightside {
+    .gi-check-pay-img {
+      margin-top: 15px;
+    }
+  }
+  .gi-new-desc {
+    position: relative;
+    line-height: 24px;
+    color: $text-color;
+    letter-spacing: 0;
+    max-width: 64%;
+  }
+  .gi-new-btn {
+    margin-top: 26px;
+    a {
+      height: 40px;
+      text-transform: uppercase;
+      font-size: 16px;
+      min-width: 150px;
+      line-height: 40px;
+      letter-spacing: 0;
+    }
+  }
+  .gi-check-login-form {
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 11px;
+      color: $title-color;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+    input {
+      background-color: transparent;
+      border: 1px solid $border-color-grey;
+      color: $title-color;
+      font-size: 14px;
+      margin-bottom: 0px;
+      padding: 0 15px;
+      width: $width-100;
+      outline: none;
+      border-radius: $main-border-radius;
+    }
+    .gi-check-login-fp {
+      color: $title-color;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-decoration: underline;
+      font-size: 15px;
+      line-height: 24px;
+    }
+    .gi-check-login-btn {
+      display: flex;
+      align-items: center;
+      margin-top: 14px;
+
+      .gi-btn-2 {
+        margin-right: 20px;
+      }
+    }
+  }
+  .gi-check-bill-form {
+    margin-bottom: 2px;
+  }
+  .gi-bill-option {
+    margin-bottom: 32px;
+    display: block;
+    span {
+      margin-right: 45px;
+    }
+  }
+  .padding-bottom-3 {
+    padding-bottom: 3px !important;
+  }
+  /*-----  Checkout Page CSS  ------*/
+  .gi-checkout-wrap {
+    .gi-check-order-btn {
+      margin: 15px;
+    }
+    .gi-check-bill-form {
+      .gi-bill-wrap {
+        width: $width-100;
+        padding: 0 15px;
+      }
+      .gi-bill-wrap.gi-bill-half {
+        width: 50%;
+      }
+      form {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -15px;
+      }
+      label {
+        margin-bottom: 7px;
+        color: $title-color;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+      input {
+        background-color: transparent;
+        border: 1px solid $border-color-grey;
+        color: $title-color;
+        font-size: 14px;
+        // margin-bottom: 26px;
+        padding: 0 15px;
+        width: $width-100;
+        outline: none;
+        border-radius: $main-border-radius;
+      }
+      .gi-bill-fp {
+        label {
+          margin-bottom: 0;
+
+          a {
+            color: $title-color;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0px;
+          }
+        }
+      }
+      .gi-bl-select-inner {
+        position: relative;
+        display: flex;
+        width: $width-100;
+        height: 50px;
+        border-radius: 0;
+        border: 1px solid $border-color-grey;
+        font-size: 14px;
+        padding: 0;
+        // margin-bottom: 27px;
+        border-radius: $main-border-radius;
+        select {
+          padding: 0 15px;
+          appearance: none;
+          outline: 0;
+          box-shadow: none;
+          border: 0 !important;
+          background: $white;
+          background-image: none;
+          flex: 1;
+          padding: 0 10px;
+          color: $text-color;
+          cursor: pointer;
+          border-radius: $main-border-radius;
+        }
+        &::after {
+          content: '\f107';
+          position: relative;
+          font-family: $gIcons;
+          top: 0;
+          right: 0;
+          padding: 0 10px;
+          cursor: pointer;
+          pointer-events: none;
+          font-size: 24px;
+          display: flex;
+          height: 50px;
+          line-height: 1;
+          justify-content: center;
+          align-items: center;
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  .gi-checkout-content {
+    .gi-check-order-btn {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+      .btn {
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        padding: 0 5px;
+        text-transform: uppercase;
+        transition: all 0.3s ease 0s;
+        outline: none;
+        border-radius: 0px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0;
+      }
+    }
+  }
+  .gi-checkout-summary {
+    >* {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .text-left {
+      color: $text-color;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0;
+    }
+    .text-right {
+      color: $main-secondary-color;
+      font-size: 15px;
+      line-height: 24px;
+      font-weight: 500;
+      a {
+        color: $main-primary-color;
+        font-weight: 500;
+        font-size: 14px;
+      }
+    }
+    .gi-checkout-summary-total {
+      border-top: 1px solid $border-color-grey;
+      padding-top: 19px;
+      margin-bottom: 0;
+      margin-top: 16px;
+      .text-left {
+        font-size: 16px;
+        font-weight: 600;
+        color: $title-color;
+        font-family: $font-family-title;
+      }
+      .text-right {
+        font-size: 16px;
+        font-weight: 600;
+        font-family: $font-family-title;
+      }
+    }
+  }
+
+  /*-----  Sidebar Page CSS  ------*/
+  .gi-sidebar-wrap {
+    .gi-sidebar-block {
+      .gi-checkout-pro {
+        margin-top: 34px;
+        > div {
+          &:not(:last-child){
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .gi-sb-block-content {
+        .gi-checkout-pro {
+          li {
+            padding: 1px;
+            a {
+              margin: 0 auto;
+              display: block;
+              color: $text-color;
+              font-size: 12px;
+              margin-top: 0;
+              line-height: 18px;
+              font-weight: 400;
+              text-transform: capitalize;
+              letter-spacing: 0;
+              cursor: pointer;
+            }
+          }
+          .gi-pro-size {
+            li {
+              a {
+                pointer-events: none;
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                background-color: $border-color-grey;
+                color: $text-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                line-height: 18px;
+                padding-top: 2px;
+              }
+            }
+            li.active {
+              a {
+                background-color: $main-secondary-color;
+                color: $white;
+              }
+            }
+          }
+          .gi-product-inner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .gi-pro-content {
+              width: calc(100% - 143px);
+              padding: 0;
+              display: flex;
+              justify-content: center;
+              border: 0;
+              h5 {
+                padding: 0 15px 0 0;
+                a {
+                  font-size: 15px;
+                }
+              }
+            }
+            .gi-pro-image-outer {
+              width: 128px;
+              margin-right: 15px;
+              box-shadow: none;
+            }
+          }
+        }
+        .gi-del-option {
+          display: flex;
+
+          >* {
+            width: 50%;
+          }
+        }
+        .gi-del-opt-head {
+          color: $title-color;
+          font-size: 15px;
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 1;
+          margin-bottom: 10px;
+          display: block;
+        }
+        .gi-del-desc {
+          color: $text-color;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 24px;
+          margin-bottom: 15px;
+          display: block;
+          letter-spacing: 0;
+        }
+        .gi-pay-opt-head {
+          color: $title-color;
+          font-size: 15px;
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 1;
+          margin-bottom: 6px;
+          display: block;
+        }
+        .gi-pay-desc {
+          color: $text-color;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 24px;
+          margin-bottom: 15px;
+          display: block;
+          letter-spacing: 0;
+        }
+      }
+    }
+  }
+  .gi-product-inner {
+    .gi-pro-content {
+      .gi-price {
+        &:not(:last-child) {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+  .gi-sidebar-wrap.gi-checkout-del-wrap {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+    .gi-del-commemt {
+      margin-top: 12px;
+      display: block;
+      .gi-del-opt-head {
+        margin-bottom: 8px;
+      }
+    }
+    textarea {
+      background: transparent;
+      border: 1px solid $border-color-grey;
+      color: $title-color;
+      height: 100px;
+      padding: 10px 15px;
+      margin-bottom: 0;
+      width: $width-100;
+      outline: none;
+      font-size: 14px;
+      display: block;
+      border-radius: $main-border-radius;
+    }
+  }
+  .gi-sidebar-wrap.gi-checkout-pay-wrap {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+    textarea {
+      background: transparent;
+      border: 1px solid $border-color-grey;
+      color: $title-color;
+      height: 110px;
+      padding: 10px 15px;
+      margin-bottom: 0;
+      width: $width-100;
+      outline: none;
+      font-size: 14px;
+      display: block;
+      border-radius: $main-border-radius;
+    }
+    .gi-pay-commemt {
+      .gi-pay-opt-head {
+        margin-bottom: 8px;
+      }
+    }
+    .gi-pay-agree {
+      position: relative;
+      display: block;
+      margin-top: 20px;
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        &:checked {
+          ~ {
+            .checked {
+              &::after {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      a {
+        margin-left: 27px;
+        display: block;
+        color: $text-color;
+        font-size: 14px;
+        margin-top: 0;
+        line-height: 18px;
+        font-weight: 300;
+        letter-spacing: 0;
+        cursor: pointer;
+        span {
+          font-weight: 500;
+          color: $title-color;
+        }
+      }
+      .checked {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 15px;
+        width: 15px;
+        background-color: #ffffff;
+        border: 1px solid #ededed;
+        border-radius: 4px;
+        -webkit-transition: all 300ms linear;
+        transition: all 300ms linear;
+        &:after {
+          left: -1px;
+          top: -1px;
+          width: 15px;
+          height: 15px;
+          border: 1px solid $main-primary-color;
+          content: "\f00c";
+          position: relative;
+          display: none;
+          font-family: $gIcons;
+          font-size: 9px;
+          color: $main-primary-color;
+          line-height: 14px;
+          text-align: center;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+  .gi-sidebar-wrap.gi-check-pay-img-wrap {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+  }
+  .gi-check-pay-img-wrap {
+    .gi-check-pay-img-inner {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .gi-check-pay-img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  /*-----  Checkout Summary CSS  ------*/
+  .gi-checkout-summary {
+    .gi-checkout-coupan-content {
+      display: none;
+      margin-bottom: 0;
+    }
+  }
+  .gi-checkout-coupan-form {
+    display: flex;
+    border: 1px solid $border-color-grey;
+    padding: 5px;
+    border-radius: $main-border-radius;
+    .gi-coupan {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 35px;
+      height: 35px;
+      color: $text-color;
+      font-size: 14px;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      text-align: left;
+      padding-left: 10px;
+      padding-right: 10px;
+      letter-spacing: 0.5px;
+      border-radius: $main-border-radius;
+    }
+    .gi-coupan-btn {
+      font-size: 16px;
+      text-align: center;
+      padding: 0 15px;
+    }
+  }

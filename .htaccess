@@ -1,0 +1,26 @@
+# Enable mod_rewrite (if not already enabled)
+RewriteEngine On
+
+# Serve static assets from the public folder (like images, CSS, JS)
+RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+
+# Reverse Proxy to Next.js App Running Locally on Port 3000
+RewriteCond %{HTTP_HOST} ^grabit-react\.maraviyainfotech\.com$
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
+
+# Optional: Force HTTPS if you need it (uncomment to enable)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Cache static assets for better performance (optional)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+</IfModule>

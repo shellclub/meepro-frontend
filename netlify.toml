@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build:netlify"
+  publish = ".next"  # or the directory where Next.js builds
+
+[build.environment]
+  NODE_OPTIONS = "--max-old-space-size=14096"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css"

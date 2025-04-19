@@ -1,0 +1,271 @@
+/*=======  Quick View ========*/
+.quickview-modal {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  .qty_close {
+    width: 5px;
+    height: 5px;
+    background: url(../img/icons/close.svg);
+    background-size: 100%;
+  }
+  .modal-body {
+    padding: 30px;
+  }
+  .modal-content {
+    .single-pro-img {
+      height: 100%;
+      border: 1px solid $border-color-grey;
+      border-radius: $main-border-radius;
+      overflow: hidden;
+      .single-product-scroll {
+        height: 100%;
+      }
+      .single-slide {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+.qty-nav-thumb {
+  margin-bottom: -5px;
+  padding: 0 40px;
+  .slick-slider {
+    &:hover {
+      .slick-prev,
+      .slide-arrow.prev-arrow {
+        opacity: 1 !important;
+      }
+    }
+  }
+}
+.quickview-pro-content {
+  .gi-quick-title {
+    a {
+      margin: 0 0 15px 0;
+      display: block;
+      color: $main-secondary-color;
+      font-size: 22px;
+      text-decoration: none;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: $text-color;
+    margin: 0 0 12px;
+    font-weight: 600;
+    span {
+      font-weight: 400;
+    }
+  }
+  .quickview-para {
+    font-weight: 400;
+    color: $text-color;
+    line-height: 26px;
+  }
+  .gi-quickview-rating {
+    display: flex;
+    margin-bottom: 15px;
+    i {
+      margin-right: 5px !important;
+    }
+  }
+  .gi-quickview-desc {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 24px;
+    color: $text-color;
+    font-weight: 300;
+  }
+  .gi-quickview-price {
+    padding: 5px 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    span.old-price {
+      font-size: 18px;
+      margin-left: 10px;
+      text-decoration: line-through;
+      color: $text-color;
+    }
+    span.new-price {
+      color: $main-secondary-color;
+      font-weight: 700;
+      font-size: 22px;
+    }
+  }
+  .gi-pro-variation {
+    .gi-pro-variation-content {
+      ul {
+        li {
+          height: 22px;
+          padding: 2px 8px;
+          cursor: pointer;
+          border: 1px solid #eeeeee;
+          color: #777;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          line-height: 22px;
+          border-radius: 3px;
+          font-weight: 400;
+          a {
+            color: $text-color;
+          }
+          &:hover {
+            a {
+              color: $white;
+            }
+          }
+        }
+        li.active {
+          background-color: $main-primary-color !important;
+          color: $white !important;
+          border-color: $main-primary-color !important;
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  .pro-details-list {
+    padding: 0 0 30px 0;
+    margin: 0 0 15px 0;
+    border-bottom: 1px solid $border-color;
+    display: inline-block;
+    width: 100;
+    color: $text-color;
+    .gi-quickview-desc {
+      font-weight: 400;
+      color: $text-color;
+      line-height: 24px;
+      margin: 0;
+    }
+    li {
+      display: block;
+      width: 100;
+      line-height: 24px;
+    }
+  }
+  .gi-quickview-qty {
+    display: inline-flex;
+    margin: 15px 0 0 0;
+    width: 100;
+    .qty-plus-minus {
+      width: 100px;
+      height: 43px;
+      padding: 0;
+      border: 1px solid $border-color-grey;
+      border-radius: $main-border-radius;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 3px;
+      .gi-qtybtn {
+        width: 30px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: $text-color;
+      }
+      input.qty-input {
+        width: 40px;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        background: transparent none repeat scroll 0 0;
+        color: $text-color;
+        font-size: 14px;
+        border: medium none;
+        text-align: center;
+        outline: none;
+      }
+    }
+    .gi-quickview-cart {
+      .gi-btn-1 {
+        margin: 0 0 0 15px;
+        padding: 10px 15px;
+        border-radius: 3px;
+        svg {
+          margin-right: 8px;
+        }
+        .svg_img.pro_svg {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 991px) {
+  .quickview-pro-content {
+    .gi-quick-title {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .modal-dialog {
+    max-width: 720px;
+    width: 720px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .modal-dialog {
+    width: 80%;
+    height: auto;
+    max-width: 100%;
+    padding: 35px 0;
+    margin: 0 auto;
+    .qty-product-cover {
+      max-width: 420px;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    .qty-nav-thumb {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+  .quickview-pro-content {
+    margin-top: 5px;
+    .gi-quick-title {
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .modal-dialog {
+    width: 90%;
+  }
+  .quickview-pro-content {
+    margin-top: 5px;
+    .gi-quick-title {
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 360px) {
+  .quickview-modal {
+    .modal-body {
+      padding: 15px;
+    }
+    button.btn-close.qty_close {
+      right: 5px;
+      top: 5px;
+    }
+  }
+}

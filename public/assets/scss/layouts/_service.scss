@@ -1,0 +1,46 @@
+/**===== Start Service Section =====**/
+.gi-ser-inner {
+	@include ease3;
+	padding: 30px;
+	transition: all 0.3s ease 0s;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	background-color: $white;
+	border-radius: $main-border-radius;
+	border: 1px solid $border-color-grey;
+	&:hover {
+		.gi-service-image {
+			svg {
+			}
+		}
+	}
+	.gi-service-image {
+		margin-bottom: 15px;
+		i {
+			font-size: 40px;
+			color: $main-primary-color;
+			line-height: 0;
+		}
+	}
+}
+.gi-service-desc {
+	h3 {
+		font-family: $font-family-text;
+		font-size: 18px;
+		font-weight: 500;
+		color: $title-color;
+		letter-spacing: 0.6px;
+		margin-bottom: 10px;
+	}
+	p {
+		margin: 0;
+		font-size: 14px;
+		color: $text-color;
+		line-height: 1.5;
+		letter-spacing: 0.5px;
+	}
+}

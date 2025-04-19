@@ -1,0 +1,31 @@
+.gi-product-inner {
+  .gi-pro-content {
+    .gi-pro-title {
+      min-height: 2.75rem;
+      max-height: 2.75rem;
+    }
+  }
+}
+
+
+.Toastify__toast-container
+  .Toastify__progress-bar--wrp
+  .Toastify__progress-bar--success {
+  background: #5caf90;
+}
+
+@media only screen and (min-width: 992px) {
+    .gi-footer {
+      .footer-top {
+        .gi-footer-widget {
+          .gi-footer-dropdown {
+            display: block !important;
+            opacity: 1 !important;
+            height: auto !important;
+            transform: translateY(0px) !important;
+            padding-bottom: 0px !important;
+          }
+        }
+      }
+    }
+  }

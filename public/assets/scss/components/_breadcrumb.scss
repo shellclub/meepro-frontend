@@ -1,0 +1,62 @@
+/*-------------------------------------------------
+  Breadcrumb Style CSS
+---------------------------------------------------*/
+.gi-breadcrumb {
+  .gi_breadcrumb_inner {
+    margin: 0;
+    padding: 15px;
+    border: 1px solid $border-color-grey;
+    border-radius: 0 0 5px 5px;
+    border-top: 0;
+  }
+  .gi-breadcrumb-title {
+    text-decoration: none;
+    color: $title-color;
+    display: block;
+    font-size: 15px;
+    font-family: $font-family-text;
+    line-height: 22px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: capitalize;
+  }
+}
+.gi-breadcrumb-list {
+  text-align: right;
+  li {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    a {
+      position: relative;
+      color: $title-color;
+    }
+  }
+  li.active {
+    color: $main-primary-color;
+  }
+  .gi-breadcrumb-item.active {
+    &::before {
+      color: $main-primary-color;
+    }
+  }
+}
+.gi-breadcrumb-item {
+  display: flex;
+  + {
+    .gi-breadcrumb-item {
+      padding-left: 7px;
+      &::before {
+        display: inline-block;
+        padding-right: 7px;
+        color: $title-color;
+        content: "\f105";
+        font-family: $gIcons;
+        font-size: 15px;
+      }
+    }
+  }
+}

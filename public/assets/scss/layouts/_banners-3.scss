@@ -1,0 +1,88 @@
+/*===== Banners section css =====*/
+.gi-offer-section {
+  overflow: hidden;
+}
+.gi-ofr-banners {
+  .gi-bnr-body {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    &::before {
+      background: linear-gradient(
+        to right,
+        fade_out(#fff, 1) 0%,
+        fade_out(#fff, 0.7) 100%
+      );
+      content: "";
+      display: block;
+      height: 100%;
+      left: -75%;
+      position: absolute;
+      top: 0;
+      transform: skewX(-25deg);
+      width: 50%;
+      z-index: 2;
+    }
+    &:hover,
+    &:focus {
+      &::before {
+        animation: shine 0.85s;
+      }
+    }
+
+    @keyframes shine {
+      100% {
+        left: 125%;
+      }
+    }
+    .gi-bnr-img {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+        border-radius: 0;
+      }
+      .lbl {
+        padding: 2px 7px;
+        font-size: 12px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-transform: capitalize;
+        background-color: #fff;
+        color: $title-color;
+        opacity: 1;
+        border-radius: 0;
+      }
+    }
+    .gi-bnr-detail {
+      max-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      h5 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        text-transform: capitalize;
+        text-align: right;
+      }
+      p {
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+      }
+      a {
+        padding: 5px 15px;
+      }
+    }
+  }
+}

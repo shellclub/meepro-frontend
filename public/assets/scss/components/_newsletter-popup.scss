@@ -1,0 +1,91 @@
+/*===== New Popup for home page =====*/
+#gi-popnews-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 25;
+}
+#gi-popnews-box {
+  width: 100%;
+  max-width: 600px;
+  padding: 24px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  color: $title-color;
+  display: none;
+  z-index: 25;
+  text-align: center;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  border-radius: $main-border-radius;
+  #gi-popnews-box-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 100%;
+    border-radius: $main-border-radius;
+  }
+  h2 {
+    text-decoration: none;
+    color: $title-color;
+    display: block;
+    font-size: 22px;
+    line-height: 33px;
+    font-weight: 600;
+    margin: 0 auto 10px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+  p {
+    color: $text-color;
+  }
+  form {
+    margin-bottom: 0px;
+  }
+  input {
+    
+  }
+  input:not(.form-control) {
+    color: $title-color;
+    font-size: 14px;
+    padding: 0 15px;
+    width: 100%;
+    outline: none;
+    border-radius: $main-border-radius;
+  }
+  input:not(.is-invalid) {
+    background-color: transparent;
+    border: 1px solid $border-color-1;
+    margin-bottom: 27px;
+  }
+}
+#gi-popnews-close {
+  @include ease3;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  color: red;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}

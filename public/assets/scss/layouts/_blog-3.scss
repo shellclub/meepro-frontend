@@ -1,0 +1,52 @@
+/* Blog-5 */
+.gi-blog .blog-info,
+.gi-blog-section .blog-info {
+  margin-bottom: 0;
+}
+
+.gi-blog-item {
+  .blog-info {
+    .detail {
+      .date {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        position: absolute;
+        top: 12px;
+        right: 24px;
+        h4 {
+          font-size: 18px;
+          font-weight: 700;
+          color: $white;
+          text-align: center;
+          margin: 0;
+        }
+        span {
+          font-size: 12px;
+          display: flex;
+          justify-content: center;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.gi-blog,
+.gi-blog-section {
+  .blog-info {
+    .blog-img {
+      border-radius: 0;
+    }
+    .detail {
+      h3 {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

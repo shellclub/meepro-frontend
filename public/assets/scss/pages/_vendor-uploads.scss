@@ -1,0 +1,193 @@
+/* vendor-uploads */
+.gi-vendor-upload-detail{
+    label{
+        width: 100%;
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 15px;
+    }
+    input{
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        border-radius: 0;
+        border: 1px solid $eee !important;
+        background-color: transparent;
+        color: $text-color;
+        border-radius: $main-border-radius;
+        &:focus {
+            background-color: transparent;
+        }
+    }
+    input[type=text]{
+        height: 50px;
+        box-shadow: none;
+        outline: none;
+        border-radius: $main-border-radius;
+    }
+    select{
+        height: 50px;
+        box-shadow: none;
+        outline: none;
+        border-radius: $main-border-radius;   
+        &:focus{
+            box-shadow: none;
+        } 
+    }
+    .form-select{
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        border-radius: 0;
+        border: 1px solid $eee !important;
+        background-color: transparent;
+        color: $text-color;
+        border-radius: $main-border-radius;
+    }
+    textarea{
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 15px;
+        border-radius: 0;
+        border: 1px solid $eee !important;
+        background-color: transparent;
+        color: $text-color;
+        border-radius: $main-border-radius;
+        &:focus{
+            box-shadow: none;
+            background-color: transparent;
+        }
+    }
+    input[type=color]{
+        width: 20px !important;
+        height: 20px !important;
+        padding: 0;
+        display: inline-flex;
+        margin: 4px;
+        min-height: 20px;
+        &:focus{
+            box-shadow: none;
+        }
+    }
+    input[type=number]{
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        border-radius: 0;
+        border: 1px solid $eee !important;
+        background-color: transparent;
+        color: $text-color;
+        border-radius: $main-border-radius; 
+        &:focus{
+            box-shadow: none;
+        }        
+    }
+}
+
+.form-checkbox-box{
+    height: 30px;
+    margin-top: 5px;
+    display: inline-block;
+    .form-check{
+        height: 5px;
+        margin: 0 5px 0 0;
+        padding: 0;
+        display: inline-block;
+        align-items: center;
+        input{
+            width: 20px !important;
+            height: 15px !important;
+            margin: 0;
+        }
+        label{
+            width: 20px;
+            margin: 5px 5px 2px 7px;
+            line-height: 11px;
+            color: $text-color-999;
+        }
+    }
+}
+
+.avatar-upload {
+    position: relative;
+    margin: 0px auto;
+    padding-bottom: 30px;
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;        
+        cursor: pointer;
+        input {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            border-radius: 30px;
+            position: absolute;
+            opacity: 0;
+            z-index: 5;
+            + label {
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: $white;
+                border: 1px solid $eee;
+                font-weight: normal;
+                transition: all .2s ease-in-out;
+                z-index: 4;
+                &:after {
+                    content: "\f409";
+                    font-family: uicons-regular-rounded !important;
+                    color: $gray_think_005;
+                    position: absolute;
+                    font-size: 12px;
+                    width: 35px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;    
+                    text-align: center;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+}
+.product-upload.single {
+    max-width: 500px;
+    margin: auto;
+    .avatar-preview {
+        border: 1px solid $eee;
+        border-radius: $main-border-radius;
+        overflow: hidden;
+    }
+    .gi-image-preview {
+        width: 100%;
+    }
+}
+.thumbs {    
+    max-width: 500px;
+    margin: auto auto 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .product-upload {
+        width: 100px;
+        margin: 5px;
+    }
+    .avatar-upload {
+        padding: 0;
+    }
+}
+/* responsive */
+@media (max-width: 991px) {
+    .avatar-upload {
+        .avatar-preview{
+            width: 100%;
+        }
+    }
+
+}

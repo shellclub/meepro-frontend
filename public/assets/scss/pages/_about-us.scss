@@ -1,0 +1,324 @@
+/*-------------------------------------------------
+   About Page CSS
+---------------------------------------------------*/
+
+/**===== About Section =====**/
+.gi-about {
+	.gi-about-img {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, calc(50% - 12px));
+		grid-row-gap: 24px;
+		grid-column-gap: 24px;
+		.v-img {
+			height: 100%;
+			grid-column-end: span 1;
+			grid-row-end: span 2;
+		}
+		.h-img {
+			height: 100%;
+			grid-column-end: span 1;
+			grid-row-end: span 1;
+		}
+		img {
+			width: 100%;
+			border-radius: $main-border-radius;
+		}
+	}
+	.gi-about-detail {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		.section-title {
+			padding-bottom: 0;
+			display: flex;
+			flex-direction: column;
+			h2 {
+				margin-bottom: 15px;
+				font-family: $font-family-title;
+				font-size: 26px;
+				line-height: 38px;
+				font-weight: 600;
+				color: $main-secondary-color;
+				position: relative;
+				display: inline;
+				padding: 0;
+				text-transform: capitalize;
+				line-height: 1;
+				span {
+					color: $main-primary-color;
+				}
+			}
+			p {
+				margin: 0;
+				color: $text-color;
+				font-size: 18px;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+		}
+		p {
+			color: $text-color;
+			font-size: 14px;
+			font-weight: 400;
+		}
+	}
+}
+
+/**===== Start Service Section =====**/
+.gi-ser-inner {
+	@include ease3;
+	padding: 30px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	border: 1px solid $border-color-grey;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	background-color: $white;
+	border-radius: $main-border-radius;
+	&:hover {
+		.gi-service-image {
+			svg {
+				stroke-dashoffset: 0;
+				transition: transform .3s, fill .5s, stroke-dashoffset 6s;
+			}
+		}
+	}
+	.gi-service-image {
+		margin-bottom: 15px;
+		img {
+			width: 50px;
+			height: 50px;
+		}
+	}
+}
+.gi-service-desc {
+	h3 {
+		margin-bottom: 10px;
+		font-size: 18px;
+		font-weight: 500;
+		color: $title-color;
+		letter-spacing: 0.6px;
+		font-family: $font-family-text;
+	}
+	p {
+		margin: 0;
+		font-size: 14px;
+		color: $text-color;
+		line-height: 1.5;
+		letter-spacing: 0.5px;
+	}
+}
+
+/*=====  Testimonial Section CSS  =====*/
+.testim-bg {
+	background-color: $light-grey-bg;
+	border: 1px solid $border-color-grey;
+	border-radius: $main-border-radius;
+}
+.gi-test-section {
+	.gi-test-inner {
+		max-width: 730px;
+		margin: 0 auto;
+		cursor: pointer;
+	}
+	.gi-test-item {
+		margin: 0 auto;
+		padding: 0 15px;
+		position: relative;
+		.svg_img {
+			path {
+				fill: $text-color-999;
+			}
+		}
+	}
+	.gi-test-desc {
+		font-size: 15px;
+		color: $title-color;
+		line-height: 26px;
+		letter-spacing: 0;
+		margin-bottom: 15px;
+	}
+	.gi-test-content {
+		display: flex;
+		flex-direction: column;
+		.gi-test-desc {
+			margin-bottom: 15px;
+			color: $text-color;
+		}
+	}
+	.gi-test-name {
+		font-size: 22px;
+		font-weight: 600;
+		margin-bottom: 6px;
+		color: $main-primary-color;
+		letter-spacing: 0.6px;
+		line-height: 1.2;
+	}
+	.gi-test-designation {
+		font-size: 16px;
+		color: $text-color;
+		line-height: 1.2;
+		letter-spacing: 0.5px;
+		margin-bottom: 8px;
+	}
+	.gi-test-rating {
+		i {
+			font-size: 11px;
+			margin: 0 0.5px;
+		}
+		margin: 0 auto;
+	}
+}
+#gi-testimonial-slider {
+	margin-bottom: -30px;
+	text-align: center;
+}
+.gi-test-outer {
+	max-width: 700px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.gi-test-inner {
+	max-width: 700px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.gi-test-img {
+		width: 100px;
+		margin: auto auto 30px auto;
+		display: block;
+		img {
+			border-radius: 50%;
+		}
+	}
+}
+.svg_img.test_svg {
+	position: absolute;
+	width: 45px;
+	height: auto;
+	fill: $main-secondary-color;
+}
+.svg_img.test_svg.top {
+	width: 45px;
+	top: -5px;
+	left: 0;
+	right: auto;
+}
+.svg_img.test_svg.bottom {
+	width: 45px;
+	bottom: -5px;
+	right: 0;
+	left: auto;
+}
+
+/*=====  Facts Section CSS  =====*/
+.gi-facts-section {
+	.gi-facts-inner{
+		padding: 30px 15px;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+		background-color: $white;
+		border: 1px solid $border-color-grey;
+		border-radius: $main-border-radius;
+		.counter {
+			margin-bottom: 15px;
+			font-size: 40px;
+			font-weight: 800;
+			color: #ddd;
+		}
+		h4 {
+			font-size: 20px;
+			color: $title-color;
+			font-weight: 600;
+		}
+		p {
+			max-width: 250px;
+			margin: 0;
+			font-size: 14px;
+			color: $text-color;
+		}
+	}
+}
+
+/*=====  Team Section CSS  =====*/
+.gi-team-section {
+	.gi-team-box {
+		position: relative;
+		&:hover {
+			.gi-team-imag {
+				.gi-team-socials { 
+					bottom: 15px;
+					opacity: 1;
+				}
+			}
+		}
+		.gi-team-imag {
+			position: relative;
+			img {
+				width: 100%;
+				border-radius: $main-border-radius
+			}
+			.gi-team-socials {
+				@include ease3;
+				margin: auto;
+				position: absolute;
+				top: auto;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				opacity: 0;
+				ul {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					li {
+						a {
+							width: 30px;
+							height: 30px;
+							margin: 2px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background-color: $title-color;
+							border-radius: $main-border-radius;
+							i {
+								color: $white;
+								font-size: 15px;
+							}
+							&:hover {
+								background-color: $main-primary-color;
+							}
+						}
+					}
+				}
+			}
+		}
+		.gi-team-info {
+			text-align: center;
+			h5 {
+				margin-top: 15px;
+				color: $title-color;
+				font-size: 18px;
+				font-weight: 700;
+			}
+			p {
+				margin: 0;
+				color: $text-color;
+				font-size: 13px;
+				line-height: 16px;
+			}
+		}
+	}
+}

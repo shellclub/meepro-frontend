@@ -1,0 +1,114 @@
+/* vendor-settings */
+.gi-vendor-settings {
+    h5 {
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: $text-color;
+    }
+    p {
+        color: $text-color;
+    }
+}
+.settings-field {
+    margin-bottom: 15px;
+}
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
+.gi-vendor-card-body {
+    .edit {
+        margin-top: 15px;
+        a {
+            i {
+                margin-right: 5px;    
+                font-size: 12px;
+            }
+        }
+    }
+}
+.gi-vendor-settings-card {
+    h5 {
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: $title-color;
+    }
+}
+
+.gi-vendor-detail-block {
+    h6 {
+        margin-bottom: 15px;
+        padding: 15px 15px 15px 0;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        color: $title-color;
+        border-bottom: 1px solid $eee;
+    }
+    ul {
+        li {
+            font-size: 14px;
+            padding: 5px 0;
+            color: $text-color;
+
+            strong{
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.preview-detail {
+    .gi-vendor-cover {
+        height: 300px;
+        margin-bottom: 30px;
+        position: relative;
+        background-image: none;
+        overflow: hidden;
+        img {
+            width: auto;
+            height: 330px;
+            min-width: 100%;
+            border-radius: $main-border-radius;
+        }
+        .detail {
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            .avatar-upload {
+                border-radius: $main-border-radius $main-border-radius 0 0;
+                img {
+                    width: 150px;
+                    height: 150px;
+                }
+            }
+        }
+    }
+    .gi-vendor-edit {
+        input, textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid $eee;
+            border-radius: $main-border-radius;
+            color: $text-color;
+            &::placeholder {
+                color: #999;
+            }
+            &:focus, &:focus-visible {
+                outline: none;
+            }
+        }
+        .gi-btn-2 {
+            margin-right: 15px;
+            display: flex;
+        }
+    }
+}

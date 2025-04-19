@@ -1,0 +1,280 @@
+/*-------------------------------------------------
+  Track Order Page CSS
+---------------------------------------------------*/
+.gi-track {
+	.gi-track-box {
+		border-radius: $main-border-radius;
+	}
+	.gi-track-card {
+		height: 100%;
+		padding: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		border: 1px solid $border-color-2;
+		border-radius: $main-border-radius;
+		color: $text-color;
+		text-align: center;
+		font-size: 15px;
+		background-color: $light-grey-bg;
+		.gi-track-title {
+			margin-bottom: 5px;
+			color: $title-color;
+			text-transform: capitalize;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+	.gi-steps {
+		margin-top: 24px;
+		border: 1px solid $border-color-2;
+		border-radius: $main-border-radius;
+	}	
+	.gi-steps-header {
+		padding: .375rem;
+		border-top: 1px solid $border-color-2;
+	}	
+	.gi-steps-header {
+		.progress {
+			height: .25rem;
+			.progress-bar {
+				background-color: $main-primary-color;
+			}
+		}
+	}	
+	.gi-steps-body {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}	
+	.gi-step {
+		padding: 30px 15px;
+		display: table-cell;
+		position: relative;
+		-webkit-transition: all 0.25s ease-in-out;
+		transition: all 0.25s ease-in-out;
+		border-right: 1px solid $border-color-2;
+		color: $text-color;
+		font-weight: 400;
+		text-align: center;
+		text-decoration: none;
+		text-transform: capitalize;
+		&:last-child {
+			border-right: 0;
+		}
+		&:hover {
+			color: $title-color;;
+			text-decoration: none;
+			.gi-step-indicator {
+				-webkit-transition: all 0.25s ease-in-out;
+				transition: all 0.25s ease-in-out;
+				border-color: transparent;
+				background-color: $border-color-2;
+			}
+			.gi-step-icon {
+				color: $text-color;
+			}
+		}
+	}	
+	.gi-step-indicator {
+		display: block;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 1px solid $border-color-2;
+		border-radius: 50%;
+		background-color: $white;
+		font-size: .875rem;
+		line-height: 1.375rem;
+	}	
+	.has-indicator {
+		padding-right: 1.5rem;
+		padding-left: 2.375rem;
+		.gi-step-indicator {
+			top: 50%;
+			margin-top: -.75rem;
+		}
+	}	
+	.gi-step-icon {
+		display: block;
+		width: 1.5rem;
+		height: 1.5rem;
+		margin: 0 auto;
+		margin-bottom: .75rem;
+		-webkit-transition: all 0.25s ease-in-out;
+		transition: all 0.25s ease-in-out;
+		color: $text-color-999;
+		font-size: 22px;
+	}
+	.gi-step-active {
+		color: $title-color;
+		pointer-events: none;
+		cursor: default;
+		font-weight: 500;
+		&:hover {
+			color: $title-color;
+			pointer-events: none;
+			cursor: default;
+			.gi-step-icon {
+				color: $main-primary-color;
+			}
+		}
+		.gi-step-icon {
+			color: $main-primary-color;
+		}
+	}	
+	.gi-step-completed{
+		.gi-step-indicator {
+			border-color: transparent;
+			background-color: $main-primary-color;
+			color: $white;
+			line-height: 1.25rem;
+			i {
+				line-height: 23px;
+			}
+		}
+		&:hover {
+			.gi-step-indicator {
+				border-color: transparent;
+				background-color: $main-primary-color;
+				color: $white;
+				line-height: 1.25rem;
+				i {
+					line-height: 23px;
+				}
+			}
+		}
+	}
+}
+
+/* Track order 2 */
+ul.gi {
+    margin: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    list-style-type: none;
+    li {
+		padding: 30px;
+        display: inline-block;
+        text-align: center;
+        line-height: 22px;
+    }
+}
+
+ul.gi[data-gi-steps="2"] li {
+    width: 49%;
+}
+ul.gi[data-gi-steps="3"] li {
+    width: 33%;
+}
+ul.gi[data-gi-steps="4"] li {
+    width: 24%;
+}
+ul.gi[data-gi-steps="5"] li {
+    width: 19%;
+}
+ul.gi[data-gi-steps="6"] li {
+    width: 16%;
+}
+ul.gi[data-gi-steps="7"] li {
+    width: 14%;
+}
+ul.gi[data-gi-steps="8"] li {
+    width: 12%;
+}
+ul.gi[data-gi-steps="9"] li {
+    width: 11%;
+}
+
+ul.gi {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	li {
+		margin: 2px;
+		position: relative;
+		&:before {
+			margin: auto;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: -17px;
+		}
+	}
+    li.gi-done {
+        color: $title-color;
+		font-weight: 500;
+        border-bottom: 5px solid $main-primary-color;
+        &::before {
+            width: 30px;
+            height: 30px;
+            content: "\2714";
+            color: $white;
+            background-color: $main-primary-color;
+            text-align: center;
+            line-height: 31px;
+            border: none;
+            border-radius: 50%;
+        }
+    }
+    li.gi-todo {
+        color: $text-color;
+        border-bottom: 5px solid $eee;
+        &::before {
+            content: "";			
+            width: 30px;
+            height: 30px;
+            color: $eee;
+            background-color: $eee;
+			border-radius: 50%;
+        }
+    }
+}
+
+/* responsive */
+@media (max-width: 1199px) {
+    ul.gi {
+        li{
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    ul.gi {
+	
+		flex-direction: column;
+        li.gi-done{
+            border-bottom: 0;
+            border-left: 5px solid $main-primary-color;
+        }
+        li.gi-todo{
+            border-bottom: 0;
+            border-left: 5px solid $eee;      
+        }
+        li {
+			display: flex;
+			align-items: center;
+            text-align: left;
+			border: 1px solid $eee;
+			border-bottom: 1px solid $eee !important;
+            &::before{
+				left: auto;
+                right: 15px;
+				bottom: auto;
+            }
+        }
+    }
+    ul.gi[data-gi-steps="5"] {
+        li{
+            width: 100%;
+            height: 70px;
+        }
+    }
+
+}

@@ -1,0 +1,142 @@
+/*===== Category section css =====*/
+.gi-category-shop {
+  .gi-category-block {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
+.gi-category {
+  .gi-category-block,
+  .gi-category-block-4 {
+    display: flex;
+    .gi-cat-box {
+      @include ease3;
+      border-radius: $main-border-radius;
+      position: relative;
+      .gi-cat-icon {
+        height: 100%;
+        padding: 15px;
+        background-color: #f7f7f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 0px;
+        box-shadow: none;
+        z-index: 5;
+        &:hover {
+          img {
+            -webkit-animation-name: wobble;
+            animation-name: wobble;
+            -webkit-animation-duration: 0.8s;
+            -webkit-animation-iteration-count: 0.8s;
+            -webkit-animation-timing-function: linear;
+            -webkit-transform-origin: 50% 100%;
+          }
+        }
+        @-webkit-keyframes wobble {
+          0% {
+            -webkit-transform: none;
+            transform: none;
+          }
+          15% {
+            -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+            transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+          }
+          30% {
+            -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+            transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+          }
+          45% {
+            -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+            transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+          }
+          60% {
+            -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+            transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+          }
+          75% {
+            -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+            transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+          }
+          100% {
+            -webkit-transform: none;
+            transform: none;
+          }
+        }
+        @keyframes wobble {
+          0% {
+            -webkit-transform: none;
+            transform: none;
+          }
+          15% {
+            -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+            transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+          }
+          30% {
+            -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+            transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+          }
+          45% {
+            -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+            transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+          }
+          60% {
+            -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+            transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+          }
+          75% {
+            -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+            transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+          }
+          100% {
+            -webkit-transform: none;
+            transform: none;
+          }
+        }
+        i {
+          @include ease3;
+          font-size: 40px;
+          margin: 10px 0;
+          color: $main-primary-color;
+          line-height: 0;
+        }
+        img {
+          width: 50px;
+          height: 50px;
+          margin: 10px 0;
+        }
+        .gi-cat-detail {
+          text-align: center;
+          .gi-cat-title {
+            margin: 0;
+            font-size: 15px;
+            line-height: 22px;
+            font-weight: 600;
+            color: $main-secondary-color;
+            font-family: $font-family-title;
+            text-transform: capitalize;
+          }
+          .items {
+            margin: 0;
+            font-size: 13px;
+            line-height: 28px;
+            color: $text-color;
+          }
+        }
+        .gi-lbl {
+          padding: 0 5px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: $main-primary-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 600;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

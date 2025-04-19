@@ -1,0 +1,55 @@
+/*-------------------------------------------------
+   Faq Page CSS
+---------------------------------------------------*/
+.gi-accordion.style-1 {
+	.gi-accordion-item {
+		border-color: $border-color-grey;
+		overflow: hidden;
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+		.gi-accordion-header {
+			margin: 0;
+			padding: 15px 35px 15px 15px;
+			background-color: $light-grey-bg;
+			color: $main-secondary-color;
+			font-size: 16px;
+			line-height: 28px;
+			font-weight: 500;
+			position: relative;
+			font-family: $font-family-text;
+			border: 1px solid $border-color-grey;
+			border-radius: $main-border-radius;
+			&:after {
+				content: "\f107";
+				width: 15px;
+				height: 15px;
+				display: flex;
+				align-items: center;
+				font-family: "gIcons";
+				cursor: pointer;
+				font-size: 24px;
+				color: $title-color;
+				font-weight: 400;
+				position: absolute;
+				top: 20px;
+				right: 15px;
+			}
+		}
+	}
+	.gi-accordion-body {
+		padding: 15px 0;
+		font-size: 14px;
+		color: $text-color;
+		display: none;
+		line-height: 24px;
+		code{
+			font-weight: 600;
+			font-size: 14px;
+			color: $main-primary-color;
+		}
+	}
+	.gi-accordion-body.show {
+		display: block;
+	}
+}

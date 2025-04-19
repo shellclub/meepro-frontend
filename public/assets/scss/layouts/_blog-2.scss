@@ -1,0 +1,30 @@
+/**===== Blog & blog Section =====**/
+.gi-blog-section {
+  .blog-info {
+    position: relative;
+    &:hover {
+      .detail {
+        label {
+          opacity: 1;
+        }
+      }
+    }
+    .detail {
+      label {
+        @include ease3;
+        width: 92%;
+        margin: 0;
+        padding: 15px 10px;
+        border-radius: $main-border-radius $main-border-radius 0 0;
+        position: absolute;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        color: $white;
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+}
