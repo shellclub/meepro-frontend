@@ -7,7 +7,7 @@ import fetcher from "../../fetcher-api/Fetcher";
 import Spinner from "@/components/button/Spinner";
 
 const RelatedProduct = ({
-  className = '',
+  className = "",
   onSuccess = () => {},
   hasPaginate = false,
   onError = () => {},
@@ -53,51 +53,49 @@ const RelatedProduct = ({
                 <FadeComponent
                   triggerOnce
                   direction="up"
-                  duration={2}         // Convert from ms to seconds
-                  delay={0.3}         // Convert from ms to seconds
+                  duration={2} // Convert from ms to seconds
+                  delay={0.3} // Convert from ms to seconds
                   distance={50}
-                  
                 >
                   <div className="gi-new-block m-minus-lr-12">
-                  <Swiper
-                    loop={true}
-                    autoplay={{ delay: 1000 }}
-                    slidesPerView={5}
-                    breakpoints={{
-                      0: {
-                        slidesPerView: 1,
-                      },
-                      320: {
-                        slidesPerView: 1,
-                      },
-                      425: {
-                        slidesPerView: 2,
-                      },
-                      640: {
-                        slidesPerView: 2,
-                      },
-                      768: {
-                        slidesPerView: 3,
-                      },
-                      1024: {
-                        slidesPerView: 3,
-                      },
-                      1025: {
-                        slidesPerView: 5,
-                      },
-                    }}
-                    className="deal-slick-carousel gi-product-slider"
-                  >
-                    {getData().map((item: any, index: number) => (
-                      <SwiperSlide key={index}>
-                        <ItemCard data={item} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+                    <Swiper
+                      loop={true}
+                      autoplay={{ delay: 1000 }}
+                      slidesPerView={5}
+                      breakpoints={{
+                        0: {
+                          slidesPerView: 1,
+                        },
+                        320: {
+                          slidesPerView: 1,
+                        },
+                        425: {
+                          slidesPerView: 2,
+                        },
+                        640: {
+                          slidesPerView: 2,
+                        },
+                        768: {
+                          slidesPerView: 3,
+                        },
+                        1024: {
+                          slidesPerView: 3,
+                        },
+                        1025: {
+                          slidesPerView: 5,
+                        },
+                      }}
+                      className="deal-slick-carousel gi-product-slider"
+                    >
+                      {getData().map((item: any, index: number) => (
+                        <SwiperSlide key={index}>
+                          <ItemCard data={item} />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
-                  
                 </FadeComponent>
-                
+
                 {/* <Fade
                   triggerOnce
                   direction="up"

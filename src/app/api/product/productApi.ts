@@ -16,3 +16,18 @@ export const getProductApi = async (search: IProductSearch) => {
     }
   }
 };
+
+export const getProductDataByIdApi = async (id: string) => {
+  try {
+    const res = await axiosServices.get(`${basePath}/${id}`);
+    return res?.data.data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      console.error(err);
+      throw Promise.reject(err);
+    } else {
+      console.error(err);
+      throw Promise.reject(err);
+    }
+  }
+};

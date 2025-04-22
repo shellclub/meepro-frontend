@@ -7,3 +7,10 @@ export interface ICommonCategory {
   num: number;
   id: string;
 }
+
+export interface ICommonData {
+  id: string;
+  type: string;
+  name: string;
+  description: string;
+}

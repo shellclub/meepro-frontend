@@ -1,11 +1,16 @@
 import { getRegistrationData } from "@/components/login/RegisterPage";
 import RatingComponent from "@/components/stars/RatingCompoents";
 import { RootState } from "@/store";
+import { IProductById } from "@/types/product/productType";
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-const DiscountContent = () => {
+const ProductDiscountContent = ({
+  productData,
+}: {
+  productData: IProductById | undefined; // Ideally replace `any` with a proper type
+}) => {
   const login = useSelector(
     (state: RootState) => state.registration.isAuthenticated
   );
@@ -75,7 +80,7 @@ const DiscountContent = () => {
             className="gi-accordion-header"
             onClick={() => handleAccordionToggle(0)}
           >
-            Product Detail
+            รายละเอียดสินค้า
           </h4>
           <div
             className={`gi-accordion-body ${
@@ -83,42 +88,11 @@ const DiscountContent = () => {
             }`}
           >
             <div className="gi-single-pro-tab-desc">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book. It has survived
-                not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged.
-              </p>
-              <ul>
-                <li>Any Product types that You want - Simple, Configurable</li>
-                <li>Downloadable/Digital Products, Virtual Products</li>
-                <li>Inventory Management with Backordered items</li>
-                <li>Flatlock seams throughout.</li>
-              </ul>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book. It has survived
-                not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged.
-              </p>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which look even slightly
-                believable. If you are going to use a passage of Lorem Ipsum,
-                you need to be sure there anything embarrassing hidden in the
-                middle of text. All the Lorem Ipsum generators on the Internet
-                tend to repeat predefined chunks as necessary, making this the
-                first true generator on the Internet. It uses a dictionary of
-                over 200 Latin words, combined with a handful of model sentence
-                structures, to generate Lorem Ipsum which looks reasonable. The
-                generated Lorem Ipsum is therefore always free from repetition,
-                injected humour, or non-characteristic words etc.dsafdsafds
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: productData?.product_description || "",
+                }}
+              ></div>
             </div>
           </div>
         </div>
@@ -131,7 +105,7 @@ const DiscountContent = () => {
             className="gi-accordion-header"
             onClick={() => handleAccordionToggle(1)}
           >
-            Specifications
+            ข้อมูลสินค้า
           </h4>
           <div
             className={`gi-accordion-body ${
@@ -235,7 +209,7 @@ const DiscountContent = () => {
             className="gi-accordion-header"
             onClick={() => handleAccordionToggle(3)}
           >
-            Reviews
+            รีวิวสินค้า
           </h4>
           <div
             className={`gi-accordion-body p-b-0 ${
@@ -336,4 +310,4 @@ const DiscountContent = () => {
   );
 };
 
-export default DiscountContent;
+export default ProductDiscountContent;

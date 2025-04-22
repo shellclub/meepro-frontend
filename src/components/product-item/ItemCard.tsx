@@ -14,7 +14,7 @@ import { addWishlist, removeWishlist } from "@/store/reducers/wishlistSlice";
 import { addCompare, removeCompareItem } from "@/store/reducers/compareSlice";
 
 interface Item {
-  id: number;
+  id: number | string;
   title: string;
   newPrice: number;
   waight: string;
@@ -53,7 +53,7 @@ const ItemCard = ({ data }: any) => {
     const isItemInCart = cartItems.some((item: Item) => item.id === data.id);
 
     if (!isItemInCart) {
-      dispatch(addItem({ ...data, quantity: 1 }));
+      // dispatch(addItem({ ...data, quantity: 1 }));
       showSuccessToast("Add product in Cart Successfully!");
     } else {
       const updatedCartItems = cartItems.map((item: Item) =>
@@ -76,12 +76,12 @@ const ItemCard = ({ data }: any) => {
 
   const handleWishlist = (data: Item) => {
     if (!isInWishlist(data)) {
-      dispatch(addWishlist(data));
+      // dispatch(addWishlist(data));
       showSuccessToast("Add product in Wishlist Successfully!", {
         icon: false,
       });
     } else {
-      dispatch(removeWishlist(data.id));
+      // dispatch(removeWishlist(data.id));
       showSuccessToast("Remove product on Wishlist Successfully!", {
         icon: false,
       });
@@ -95,12 +95,12 @@ const ItemCard = ({ data }: any) => {
 
   const handleCompareItem = (data: Item) => {
     if (!isInCompare(data)) {
-      dispatch(addCompare(data));
+      // dispatch(addCompare(data));
       showSuccessToast(`Add product in Compare list Successfully!`, {
         icon: false,
       });
     } else {
-      dispatch(removeCompareItem(data.id));
+      // dispatch(removeCompareItem(data.id));
       showSuccessToast("Remove product on Compare list Successfully!", {
         icon: false,
       });
@@ -219,7 +219,8 @@ const ItemCard = ({ data }: any) => {
               <h6 className="gi-pro-stitle">{data.category}</h6>
             </Link>
             <h5 className="gi-pro-title">
-              <Link href="/product-left-sidebar">{data.title}</Link>
+              {/* <Link href="/product-left-sidebar">{data.title}</Link> */}
+              <Link href={`/product/${data.id}`}>{data.title}</Link>
             </h5>
             <p className="gi-info">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
