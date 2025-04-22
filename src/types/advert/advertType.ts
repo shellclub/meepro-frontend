@@ -1,9 +1,4 @@
-export interface ICommonData {
-  id: string;
-  type: string;
-  name: string;
-  description: string;
-}
+import { ICommonData } from "../common-data/commonDataType";
 
 export interface IAdvertItem {
   id: string;
