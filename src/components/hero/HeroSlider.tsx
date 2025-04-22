@@ -3,8 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import Link from "next/link";
+import useGetAdvert from "@/hooks/advert/useGetAdvert";
 
 function HeroSlider() {
+  const { data, isLoading: loading, refetch } = useGetAdvert();
   return (
     <>
       <section className="section gi-hero m-tb-40">
@@ -20,20 +22,49 @@ function HeroSlider() {
                       clickable: true,
                     }}
                     modules={[Pagination, Autoplay]}
-                    loop={true}
-                    speed={2000}
+                    loop={data && data["advert_main_center"].length > 1}
+                    speed={3000}
                     autoplay={{
-                      delay: 2500,
+                      delay: 3000,
                       disableOnInteraction: false,
                     }}
                     slidesPerView={1}
                     className="swiper-pagination-white gi-slider main-slider-nav main-slider-dot swiper-wrapper"
                   >
-                    <SwiperSlide className="gi-slide-item swiper-slide d-flex slide-1">
+                    {data &&
+                      data["advert_main_center"]?.map((item) => (
+                        <SwiperSlide
+                          key={item.id}
+                          className="gi-slide-item swiper-slide d-flex"
+                          style={{
+                            backgroundImage: `url(${item.image_path})`,
+                            backgroundPosition: "center",
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                        >
+                          <div className="gi-slide-content slider-animation">
+                            <p>{item.title}</p>
+                            <h1 className="gi-slide-title">
+                              {item.description}
+                            </h1>
+                            {item.button_text && (
+                              <div className="gi-slide-btn">
+                                <a href="#" className="gi-btn-1">
+                                  {item.button_text}
+                                  <i
+                                    className="fi-rr-angle-double-small-right"
+                                    aria-hidden="true"
+                                  ></i>
+                                </a>
+                              </div>
+                            )}
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    {/* <SwiperSlide className="gi-slide-item swiper-slide d-flex slide-1">
                       <div className="gi-slide-content slider-animation">
-                        <p>
-                          จัดใหญ่ ลดราคา
-                        </p>
+                        <p>จัดใหญ่ ลดราคา</p>
                         <h1 className="gi-slide-title">
                           Maga Sale ลดแหลกตั้งแต่ต้นปี
                         </h1>
@@ -49,10 +80,8 @@ function HeroSlider() {
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="gi-slide-item swiper-slide d-flex slide-2">
-                      <div className="gi-slide-content slider-animation">
-                       
-                      </div>
-                    </SwiperSlide>
+                      <div className="gi-slide-content slider-animation"></div>
+                    </SwiperSlide> */}
                     <div className=" swiper-pagination swiper-pagination-white"></div>
                     <div className="swiper-buttons">
                       <div className="swiper-button-next"></div>

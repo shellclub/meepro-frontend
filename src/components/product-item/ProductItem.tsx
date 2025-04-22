@@ -5,19 +5,16 @@ import ItemCard from "./ItemCard";
 import { ProductContentType } from "../../types";
 import fetcher from "../fetcher-api/Fetcher";
 import Spinner from "../button/Spinner";
+import useGetProduct from "@/hooks/product/useGetProduct";
+import { IProduct, IProductSearch } from "@/types/product/productType";
 
-function ProductAll({
-  url,
-  onSuccess = () => {},
-  hasPaginate = false,
-  onError = () => {},
-}: ProductContentType) {
-  const { data, error } = useSwr(url, fetcher, {
-    onSuccess,
-    onError,
-    revalidateOnFocus: false,
-    dedupingInterval: 10000,
-  });
+function ProductAll(search: IProductSearch) {
+  // const { data, error } = useSwr(url, fetcher, {
+  //   onSuccess,
+  //   onError,
+  //   revalidateOnFocus: false,
+  //   dedupingInterval: 10000,
+  // });
 
   const [selected, setSelected] = useState(false);
 
@@ -25,22 +22,29 @@ function ProductAll({
     setSelected(!selected);
   };
 
-  if (error) return <div>Failed to load products</div>;
-  if (!data)
+  // if (error) return <div>Failed to load products</div>;
+  // if (!data)
+  //   return (
+  //     <div>
+  //       <Spinner />
+  //     </div>
+  //   );
+
+  // const getData = () => {
+  //   if (hasPaginate) return data.data;
+  //   else return data;
+  // };
+
+  const { data, isLoading: loading, refetch } = useGetProduct(search);
+  if (loading)
     return (
       <div>
         <Spinner />
       </div>
     );
-
-  const getData = () => {
-    if (hasPaginate) return data.data;
-    else return data;
-  };
-
   return (
     <>
-      {getData().map((item: any, index: number) => (
+      {data?.map((item: any, index: number) => (
         <Col
           key={index}
           md={4}

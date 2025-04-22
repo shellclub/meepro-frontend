@@ -8,6 +8,7 @@ import fetcher from "../fetcher-api/Fetcher";
 import Spinner from "../button/Spinner";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import useGetCategory from "@/hooks/common-data/useGetCategory";
 
 const Category = ({
   onSuccess = () => {},
@@ -16,23 +17,24 @@ const Category = ({
   className = "padding-tb-40",
 }) => {
   const { direction } = useSelector((state: RootState) => state.theme);
-  const { data, error } = useSWR("/api/grocerycategory", fetcher, {
-    onSuccess,
-    onError,
-  });
+  // const { data, error } = useSWR("/api/grocerycategory", fetcher, {
+  //   onSuccess,
+  //   onError,
+  // });
 
-  if (error) return <div>Failed to load products</div>;
-  if (!data)
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
+  // if (error) return <div>Failed to load products</div>;
+  // if (!data)
+  //   return (
+  //     <div>
+  //       <Spinner />
+  //     </div>
+  //   );
 
-  const getData = () => {
-    if (hasPaginate) return data.data;
-    else return data;
-  };
+  // const getData = () => {
+  //   if (hasPaginate) return data.data;
+  //   else return data;
+  // };
+  const { data, isLoading: loading, refetch } = useGetCategory();
 
   return (
     <section className={`gi-category body-bg ${className}`}>
@@ -41,7 +43,7 @@ const Category = ({
           <Col xl={12}>
             <Swiper
               dir={direction == "RTL" ? "rtl" : "ltr"}
-              loop={true}
+              loop={data && data.length > 5}
               autoplay={{ delay: 1000 }}
               slidesPerView={5}
               spaceBetween={20}
@@ -71,9 +73,11 @@ const Category = ({
                   slidesPerView: 6,
                 },
               }}
-              className={`gi-category-block owl-carousel  ${direction == "RTL" ? "rtl" : "ltr"}`}
+              className={`gi-category-block owl-carousel  ${
+                direction == "RTL" ? "rtl" : "ltr"
+              }`}
             >
-              {getData().map((item: any, index: number) => (
+              {data?.map((item: any, index: number) => (
                 <SwiperSlide
                   key={index}
                   className={`gi-cat-box gi-cat-box-${item.num}`}

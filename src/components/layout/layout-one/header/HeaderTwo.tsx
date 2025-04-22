@@ -8,8 +8,11 @@ import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
 import { logout, setUserData } from "@/store/reducers/registrationSlice";
 import { setSearchTerm } from "@/store/reducers/filterReducer";
+import { useSession } from "next-auth/react";
 
 function HeaderTwo({ cartItems, wishlistItems }) {
+  const { data: session } = useSession();
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -106,32 +109,32 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                         <i className="fi-rr-user"></i>
                       </div>
                       <div className="gi-btn-desc">
-                        <span className="gi-btn-title">Account</span>
+                        <span className="gi-btn-title">ผู้ใข้งาน</span>
                         <span className="gi-btn-stitle">
                           {" "}
-                          {isAuthenticated ? "Logout" : "Login"}
+                          {session?.user.name}
                         </span>
                       </div>
                     </Link>
                     <ul className="gi-dropdown-menu">
-                      {isAuthenticated ? (
+                      {session?.user ? (
                         <>
                           <li>
                             <Link
                               className="dropdown-item"
                               href="/user-profile"
                             >
-                              My Profile
+                              โปรไฟล์ของฉัน
                             </Link>
                           </li>
                           <li>
                             <Link className="dropdown-item" href="/orders">
-                              Orders
+                              คำสังซื้อ
                             </Link>
                           </li>
                           <li>
                             <a className="dropdown-item" onClick={handleLogout}>
-                              Logout
+                              ออกจากระบบ
                             </a>
                           </li>
                         </>
@@ -139,7 +142,7 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                         <>
                           <li>
                             <Link className="dropdown-item" href="/register">
-                              Register
+                              สมัครเข้าใช้งาน
                             </Link>
                           </li>
                           <li>
@@ -149,7 +152,7 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                           </li>
                           <li>
                             <Link className="dropdown-item" href="/login">
-                              Login
+                              ลงชื่อเข้าใข้งาน
                             </Link>
                           </li>
                         </>

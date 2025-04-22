@@ -3,10 +3,7 @@ import LoginPage from '@/components/login/LoginPage'
 const page = () => {
     return (
         <>
-
-
             <LoginPage />
-
         </>
     )
 }

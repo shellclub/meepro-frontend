@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import ProductAll from "../product-item/ProductItem";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { Fade } from "react-awesome-reveal";
+import useGetProduct from "@/hooks/product/useGetProduct";
+import useGetCategory from "@/hooks/common-data/useGetCategory";
 
 const GroceryArrials = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -11,7 +13,13 @@ const GroceryArrials = () => {
   const handleProductClick = (index: number) => {
     setSelectedIndex(index);
   };
-
+  const { data, isLoading, refetch } = useGetCategory();
+  if (isLoading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
   return (
     <>
       <section
@@ -49,10 +57,28 @@ const GroceryArrials = () => {
                       onClick={() => handleProductClick(0)}
                       data-bs-toggle="tab"
                     >
-                      All
+                      ทั้งหมด
                     </a>
                   </Tab>
-                  <Tab
+
+                  {data?.slice(0, 6).map((item, idx) => (
+                    <Tab
+                      style={{ outline: "none" }}
+                      className="nav-item gi-header-rtl-arrival"
+                      key={item.id}
+                    >
+                      <a
+                        className={`nav-link ${
+                          selectedIndex == idx + 1 ? "active" : ""
+                        }`}
+                        data-bs-toggle="tab"
+                        onClick={() => handleProductClick(1)}
+                      >
+                        {item.name}
+                      </a>
+                    </Tab>
+                  ))}
+                  {/* <Tab
                     style={{ outline: "none" }}
                     className="nav-item gi-header-rtl-arrival"
                     key={"snack"}
@@ -96,7 +122,7 @@ const GroceryArrials = () => {
                     >
                       Vegetables
                     </a>
-                  </Tab>
+                  </Tab> */}
                 </ul>
               </TabList>
               {/* <!-- Tab End --> */}
@@ -115,49 +141,28 @@ const GroceryArrials = () => {
                       }`}
                     >
                       <Row>
-                        <ProductAll url="/api/products" />
+                        {/* <ProductAll url="/api/products" /> */}
+                        <ProductAll limit={20} />
                       </Row>
                     </Fade>
                   </TabPanel>
-                  <TabPanel>
-                    <Fade
-                      triggerOnce
-                      duration={400}
-                      className={`tab-pane fade ${
-                        selectedIndex === 1 ? "show active product-block" : ""
-                      }`}
-                    >
-                      <Row>
-                        <ProductAll url="/api/snack" />
-                      </Row>
-                    </Fade>
-                  </TabPanel>
-                  <TabPanel>
-                    <Fade
-                      triggerOnce
-                      duration={400}
-                      className={`tab-pane fade ${
-                        selectedIndex === 2 ? "show active product-block" : ""
-                      }`}
-                    >
-                      <Row>
-                        <ProductAll url="/api/fruits" />
-                      </Row>
-                    </Fade>
-                  </TabPanel>
-                  <TabPanel>
-                    <Fade
-                      triggerOnce
-                      duration={400}
-                      className={`tab-pane fade ${
-                        selectedIndex === 3 ? "show active product-block" : ""
-                      }`}
-                    >
-                      <Row>
-                        <ProductAll url="/api/vegetables" />
-                      </Row>
-                    </Fade>
-                  </TabPanel>
+                  {data?.slice(0, 6).map((item, idx) => (
+                    <TabPanel key={`tab-${item.id}`}>
+                      <Fade
+                        triggerOnce
+                        duration={400}
+                        className={`tab-pane fade ${
+                          selectedIndex === idx + 1
+                            ? "show active product-block"
+                            : ""
+                        }`}
+                      >
+                        <Row>
+                          <ProductAll category_id={item.id} limit={10} />
+                        </Row>
+                      </Fade>
+                    </TabPanel>
+                  ))}
                 </div>
               </Col>
             </Row>
