@@ -8,27 +8,28 @@ import useSWR from "swr";
 import fetcher from "../fetcher-api/Fetcher";
 import DealendTimer from "../dealend-timer/DealendTimer";
 import Spinner from "../button/Spinner";
+import useGetProduct from "@/hooks/product/useGetProduct";
 
 const Deal = ({
   onSuccess = () => {},
   hasPaginate = false,
   onError = () => {},
 }) => {
-  const { data, error } = useSWR("/api/deal", fetcher, { onSuccess, onError });
+  // const { data, error } = useSWR("/api/deal", fetcher, { onSuccess, onError });
 
-  if (error) return <div>Failed to load products</div>;
-  if (!data)
+  // if (error) return <div>Failed to load products</div>;
+
+  // const getData = () => {
+  //   if (hasPaginate) return data.data;
+  //   else return data;
+  // };
+  const { data, isLoading: loading, refetch } = useGetProduct({ limit: 10 });
+  if (loading)
     return (
       <div>
         <Spinner />
       </div>
     );
-
-  const getData = () => {
-    if (hasPaginate) return data.data;
-    else return data;
-  };
-
   return (
     <>
       <section
@@ -65,9 +66,9 @@ const Deal = ({
                   <div className="deal-slick-carousel gi-product-slider slick-initialized slick-slider">
                     <div className="slick-list draggable">
                       <Swiper
-                        loop={true}
+                        loop={data && data.length > 5}
                         autoplay={{ delay: 1000 }}
-                        slidesPerView={5}
+                        slidesPerView={2}
                         breakpoints={{
                           0: {
                             slidesPerView: 1,
@@ -96,11 +97,18 @@ const Deal = ({
                         }}
                         className="slick-track"
                       >
-                        {getData()?.map((item: any, index: number) => (
+                        {data?.map((item: any, index: number) => {
+                          return (
+                            <SwiperSlide key={index}>
+                              <ItemCard data={item} />
+                            </SwiperSlide>
+                          );
+                        })}
+                        {/* {getData()?.map((item: any, index: number) => (
                           <SwiperSlide key={index} className="slick-slide">
                             <ItemCard data={item} />
                           </SwiperSlide>
-                        ))}
+                        ))} */}
                       </Swiper>
                     </div>
                   </div>

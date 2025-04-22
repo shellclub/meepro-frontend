@@ -51,15 +51,13 @@ const OfferBanners = () => {
                     <span className="lbl">50% Off</span>
                     <img
                       src={
-                        process.env.NEXT_PUBLIC_URL + "/assets/img/banner/12.jpg"
+                        process.env.NEXT_PUBLIC_URL +
+                        "/assets/img/banner/12.jpg"
                       }
                       alt="banner"
                     />
                   </div>
-                  <div className="gi-bnr-detail">
-                   
-                   
-                  </div>
+                  <div className="gi-bnr-detail"></div>
                 </div>
               </div>
             </Fade>
