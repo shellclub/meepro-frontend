@@ -3,7 +3,8 @@ import RelatedProduct from "@/components/product-page/related-product/RelatedPro
 import { Suspense } from "react";
 import { Breadcrumb, Row } from "react-bootstrap";
 
-function Page({ params }: { params: { id: string } }) {
+async function Page(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   return (
     <>
       <Breadcrumb title={"Product Page"} />
