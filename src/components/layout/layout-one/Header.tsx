@@ -7,7 +7,7 @@ import { RootState } from "@/store";
 import FeatureTools from "@/theme/ThemeSwitcher";
 
 function Header() {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cartCustom.items);
   const wishlistItems = useSelector(
     (state: RootState) => state.wishlist.wishlist
   );

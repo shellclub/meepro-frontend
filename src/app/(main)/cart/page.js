@@ -1,4 +1,4 @@
-import Cart from '@/components/cart/Cart'
+import CartCustom from '@/components/cart/CartCustom'
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
 
 const page = () => {
@@ -7,7 +7,7 @@ const page = () => {
 
 
       <Breadcrumb title={"Cart"} />
-      <Cart />
+      <CartCustom />
 
     </>
   )

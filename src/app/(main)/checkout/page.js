@@ -1,11 +1,11 @@
-import CheckOut from '@/components/login/CheckOut'
+import CheckOutCustom from '@/components/login/CheckOutCustom'
 
 const page = () => {
     return (
         <>
 
 
-            <CheckOut />
+            <CheckOutCustom />
 
         </>
     )

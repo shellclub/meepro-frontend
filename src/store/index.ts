@@ -11,9 +11,11 @@ import compareSlice from "./reducers/compareSlice";
 import stepSlice from "./reducers/stepSlice";
 import filterReducer from "./reducers/filterReducer";
 import themeSlice from "./reducers/themeSlice";
+import cartCustomSlice from "./reducers/cartCustomSlice";
 
 // Configure persist for each slice separately
 const persistConfigCart = { key: "cart", storage };
+const persistConfigCartCustom = { key: "cartCustom", storage };
 const persistConfigRegistration = { key: "registration", storage };
 const persistConfigWishlist = { key: "wishlist", storage };
 const persistConfigCompare = { key: "compare", storage };
@@ -23,6 +25,10 @@ const persistConfigTheme = { key: "theme", storage };
 
 // Wrap each reducer with persistReducer
 const persistedCartReducer = persistReducer(persistConfigCart, cartSlice);
+const persistedCartCustomReducer = persistReducer(
+  persistConfigCartCustom,
+  cartCustomSlice
+);
 const persistedRegistrationReducer = persistReducer(
   persistConfigRegistration,
   registrationSlice
@@ -45,6 +51,7 @@ const persistedThemeReducer = persistReducer(persistConfigTheme, themeSlice);
 // Combine reducers
 const rootReducer = combineReducers({
   cart: persistedCartReducer,
+  cartCustom: persistedCartCustomReducer,
   registration: persistedRegistrationReducer,
   wishlist: persistedWishlistReducer,
   compare: persistedCompareReducer,
@@ -68,4 +75,3 @@ export type AppDispatch = typeof store.dispatch;
 
 // Persistor
 export const persistor = persistStore(store);
-

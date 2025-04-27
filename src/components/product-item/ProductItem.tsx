@@ -7,6 +7,7 @@ import fetcher from "../fetcher-api/Fetcher";
 import Spinner from "../button/Spinner";
 import useGetProduct from "@/hooks/product/useGetProduct";
 import { IProduct, IProductSearch } from "@/types/product/productType";
+import ProductItemCard from "./ProductItemCard";
 
 function ProductAll(search: IProductSearch) {
   // const { data, error } = useSwr(url, fetcher, {
@@ -53,7 +54,7 @@ function ProductAll(search: IProductSearch) {
           }`}
           onClick={handleClick}
         >
-          <ItemCard data={item} />
+          <ProductItemCard data={item} />
         </Col>
       ))}
     </>

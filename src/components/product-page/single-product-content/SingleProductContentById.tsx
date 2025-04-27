@@ -9,19 +9,44 @@ import QuantitySelector from "../../quantity-selector/QuantitySelector";
 import Spinner from "@/components/button/Spinner";
 import ZoomImage from "@/components/zoom-image/ZoomImage";
 import useGetProductById from "@/hooks/product/useGetProductById";
-import { IProductById } from "@/types/product/productType";
-import { PRODUCT_STATUS } from "@/constants/confix-value.constant";
+import {
+  IProduct,
+  IProductById,
+  IProductCart,
+  IProductVariant,
+} from "@/types/product/productType";
+import {
+  PRODUCT_LOCATION,
+  PRODUCT_STATUS,
+} from "@/constants/confix-value.constant";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import {
+  addItem,
+  setItems,
+  updateItemQuantity,
+} from "../../../store/reducers/cartCustomSlice";
+import { showSuccessToast } from "@/components/toast-popup/Toastify";
+import { useSession } from "next-auth/react";
 
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import QuantitySelectorCustom from "@/components/quantity-selector/QuantitySelectorCustom";
+import QuantitySelectorCustomValue from "@/components/quantity-selector/QuantitySelectorCustomValue";
 const SingleProductContentById = ({
   productData,
 }: {
   productData: IProductById | undefined;
 }) => {
+  const { data: session } = useSession();
+  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [isSliderInitialized, setIsSliderInitialized] = useState(false);
   const initialRef: any = null;
   const slider1 = useRef<Slider | null>(initialRef);
   const slider2 = useRef<Slider | null>(initialRef);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => state.cartCustom.items);
 
   const [selectedOptions, setSelectedOptions] = useState<{
     [optionId: string]: string;
@@ -98,6 +123,20 @@ const SingleProductContentById = ({
       );
     }
   };
+  useEffect(() => {
+    if (productData?.product_options) {
+      const initialSelections: { [optionId: string]: string } = {};
+
+      productData.product_options.forEach((option) => {
+        const firstValue = option.product_option_values?.[0];
+        if (firstValue) {
+          initialSelections[option.id] = firstValue.id;
+        }
+      });
+
+      setSelectedOptions(initialSelections);
+    }
+  }, [productData]);
 
   if (!productData)
     return (
@@ -105,6 +144,93 @@ const SingleProductContentById = ({
         <Spinner />
       </div>
     );
+  // useEffect(() => {
+  //   // console.log(selectedOptions[productData.product_options?.[0].id || ""]);
+  //   const idOptionValue =
+  //     selectedOptions[productData.product_options?.[0].id || ""];
+  //   // console.log(
+  //   //   productData.product_options?.find((el) => selectedOptions[el.id])
+  //   // );
+  //   const product_options = productData.product_options?.find(
+  //     (el) => selectedOptions[el.id]
+  //   );
+  //   const optionValue = product_options?.product_option_values.find(
+  //     (el) => el.id == idOptionValue
+  //   );
+  //   // console.log(optionValue);
+  // }, [selectedOptions]);
+
+  const handleCart = async (productVarian: IProductVariant) => {
+    if (!session?.user) {
+      const result = await Swal.fire({
+        icon: "info",
+        title: "กรุณาลงชื่อเข้าใช้งาน",
+        confirmButtonText: "ไปที่หน้าล็อกอิน",
+        confirmButtonColor: "#3085d6",
+      });
+      if (result.isConfirmed) {
+        router.push("/login");
+      }
+    } else {
+      // const data = { rawData };
+      const firstOptionId = productData.product_options?.[0]?.id;
+      const selectedOptionValueId = selectedOptions[firstOptionId ?? ""];
+
+      const selectedOption = productData.product_options?.find(
+        (option) => selectedOptions[option.id]
+      );
+
+      const selectedOptionValue = selectedOption?.product_option_values.find(
+        (value) => value.id === selectedOptions[selectedOption.id]
+      );
+      const data: IProductCart = {
+        id: productVarian.id,
+        product_id: productData.id,
+        title: productData.product_name,
+        sale: "",
+        image: productVarian.main_image,
+        imageTwo: productVarian.main_image,
+        category: productData.category?.name,
+        newPrice: Number(productVarian?.price_3 ?? 0),
+        oldPrice: Number(productVarian?.price_3 ?? 0),
+        location: PRODUCT_LOCATION.ONLINE,
+        brand: productData.brand?.name,
+        sku: productVarian?.sku_id,
+        rating: 3,
+        status:
+          productVarian?.quantity > 0
+            ? PRODUCT_STATUS.IN_STOCK
+            : PRODUCT_STATUS.OUT_OF_STOCK,
+        href: "string",
+        weight: "",
+        quantity: productVarian.quantity,
+        description: productData.product_description,
+        option: selectedOptionValue?.value,
+        productQuantityCart: quantity,
+      };
+
+      const isItemInCart = cartItems.some(
+        (item: IProduct) => item.id == data.id
+      );
+      if (!isItemInCart) {
+        dispatch(addItem({ ...data, quantity: 1 }));
+        showSuccessToast("เพิ่มสินค้าลงตะกร้าสำเร็จ!");
+      } else {
+        const updatedCartItems = cartItems.map((item: IProduct) =>
+          item.id === data.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                price: item.newPrice + data.newPrice,
+              } // Increment quantity and update price
+            : item
+        );
+        dispatch(updateItemQuantity(updatedCartItems));
+        // showSuccessToast("Add product in Cart Successfully!");
+        showSuccessToast("เพิ่มสินค้าลงตะกร้าสำเร็จ!");
+      }
+    }
+  };
 
   return (
     <>
@@ -228,22 +354,22 @@ const SingleProductContentById = ({
                   </div>
                 ))}
               </div>
-              <div
-                className="gi-single-desc"
-                dangerouslySetInnerHTML={{
-                  __html: productData?.product_description || "",
-                }}
-              />
-              <div className="gi-single-qty">
-                {/* <div className="qty-plus-minus ">
-                  <QuantitySelector
+
+              <div className="gi-single-qty mb-5">
+                <div className="qty-plus-minus ">
+                  <QuantitySelectorCustomValue
                     setQuantity={setQuantity}
                     quantity={quantity}
-                    id={data.id}
+                    // id={selectedVariant?.id || ""}
                   />
-                </div> */}
+                </div>
                 <div className="gi-single-cart">
-                  <button className="btn btn-primary gi-btn-1">
+                  <button
+                    className="btn btn-primary gi-btn-1"
+                    onClick={() => {
+                      handleCart(selectedVariant!!);
+                    }}
+                  >
                     เพิ่มลงตระกร้าสินค้า
                   </button>
                 </div>
@@ -265,6 +391,12 @@ const SingleProductContentById = ({
                   </a>
                 </div>
               </div>
+              <div
+                className="gi-single-desc"
+                dangerouslySetInnerHTML={{
+                  __html: productData?.product_description || "",
+                }}
+              />
             </div>
           </Col>
         </Row>

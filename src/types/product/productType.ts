@@ -1,22 +1,29 @@
 import { ICommonData } from "../common-data/commonDataType";
 
 export interface IProduct {
-  category: string;
-  sale: string;
-  image: string;
-  imageTwo: string;
+  category?: string;
+  sale?: string;
+  image?: string;
+  imageTwo?: string;
   newPrice: number;
   oldPrice: number;
-  href: string;
-  title: string;
-  waight: string;
-  rating: any;
-  status: string;
-  location: string;
-  brand: string;
-  sku: number;
+  href?: string;
+  title?: string;
+  weight?: string;
+  rating?: any;
+  status?: string;
+  location?: string;
+  brand?: string;
+  sku?: string;
   quantity: number;
-  id: number;
+  id?: string;
+  description?: string;
+  product_id?: string;
+  option?: string;
+}
+
+export interface IProductCart extends IProduct {
+  productQuantityCart: number;
 }
 
 export interface IProductSearch {

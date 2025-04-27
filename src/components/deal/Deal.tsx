@@ -9,6 +9,7 @@ import fetcher from "../fetcher-api/Fetcher";
 import DealendTimer from "../dealend-timer/DealendTimer";
 import Spinner from "../button/Spinner";
 import useGetProduct from "@/hooks/product/useGetProduct";
+import ProductItemCard from "../product-item/ProductItemCard";
 
 const Deal = ({
   onSuccess = () => {},
@@ -100,7 +101,7 @@ const Deal = ({
                         {data?.map((item: any, index: number) => {
                           return (
                             <SwiperSlide key={index}>
-                              <ItemCard data={item} />
+                              <ProductItemCard data={item} />
                             </SwiperSlide>
                           );
                         })}

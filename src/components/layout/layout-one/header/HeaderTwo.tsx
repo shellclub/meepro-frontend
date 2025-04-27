@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
 import { logout, setUserData } from "@/store/reducers/registrationSlice";
 import { setSearchTerm } from "@/store/reducers/filterReducer";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 function HeaderTwo({ cartItems, wishlistItems }) {
   const { data: session } = useSession();
@@ -47,6 +47,12 @@ function HeaderTwo({ cartItems, wishlistItems }) {
   };
 
   const handleLogout = () => {
+    sessionStorage.clear();
+    localStorage.clear();
+    signOut({
+      callbackUrl: "/home",
+      redirect: true,
+    });
     localStorage.removeItem("login_user");
     dispatch(logout());
     router.push("/");
@@ -161,7 +167,7 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                   </div>
                   {/* <!-- Header User End -->
                                 <!-- Header wishlist Start --> */}
-                  <Link
+                  {/* <Link
                     href="/wishlist"
                     className="gi-header-btn gi-wish-toggle gi-header-rtl-btn"
                     title="Wishlist"
@@ -178,10 +184,10 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                         -items
                       </span>
                     </div>
-                  </Link>
+                  </Link> */}
                   {/* <!-- Header wishlist End -->
                                 <!-- Header Cart Start --> */}
-                  <Link
+                  {/* <Link
                     onClick={openCart}
                     href="#"
                     className="gi-header-btn gi-cart-toggle gi-header-rtl-btn"
@@ -198,7 +204,27 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                         -items
                       </span>
                     </div>
-                  </Link>
+                  </Link> */}
+                  {session?.user && (
+                    <Link
+                      href="/cart"
+                      className="gi-header-btn gi-cart-toggle gi-header-rtl-btn"
+                      title="Cart"
+                    >
+                      <div className="header-icon">
+                        <i className="fi-rr-shopping-bag"></i>
+                        <span className="main-label-note-new"></span>
+                      </div>
+                      <div className="gi-btn-desc">
+                        <span className="gi-btn-title">ตะกร้าสินค้า</span>
+                        <span className="gi-btn-stitle">
+                          <b className="gi-cart-count">{cartItems.length}</b>
+                          {" ชิ้น"}
+                        </span>
+                      </div>
+                    </Link>
+                  )}
+
                   {/* <!-- Header Cart End --> */}
                 </div>
               </div>
