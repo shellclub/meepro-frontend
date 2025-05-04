@@ -32,3 +32,20 @@ export const createAddressApi = async (payload: ICreateUserAddress) => {
     }
   }
 };
+export const updateAddressByIdApi = async (
+  id: string,
+  payload: ICreateUserAddress
+) => {
+  try {
+    const res = await axiosServices.patch(`${basePath}/${id}`, payload);
+    return res?.data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      console.error(err);
+      throw Promise.reject(err);
+    } else {
+      console.error(err);
+      throw Promise.reject(err);
+    }
+  }
+};

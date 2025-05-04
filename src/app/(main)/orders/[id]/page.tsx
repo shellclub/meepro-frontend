@@ -1,11 +1,12 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import ProductOrderDetails from "@/components/order-page/OrdersDetails";
+import ProductOrderDetailsById from "@/components/order-page/OrdersDetailsById";
 import { Row } from "react-bootstrap";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ id: number }>
+  params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;
   return (
@@ -15,7 +16,8 @@ export default async function Page({
       <section className="gi-blog padding-tb-40">
         <div className="container">
           <Row>
-            <ProductOrderDetails id={id} />
+            {/* <ProductOrderDetails id={id} /> */}
+            <ProductOrderDetailsById id={id} />
           </Row>
         </div>
       </section>

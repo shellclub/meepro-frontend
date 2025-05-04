@@ -31,3 +31,21 @@ export const getProductDataByIdApi = async (id: string) => {
     }
   }
 };
+
+export const getProductDataStockByListIdApi = async (id: string[]) => {
+  try {
+    const payload = {
+      id: id,
+    };
+    const res = await axiosServices.post(`${basePath}/check-stock`, payload);
+    return res?.data.data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      console.error(err);
+      throw Promise.reject(err);
+    } else {
+      console.error(err);
+      throw Promise.reject(err);
+    }
+  }
+};

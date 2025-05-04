@@ -41,6 +41,7 @@
     "react-awesome-reveal": "^4.3.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.1",
     "react-icons": "^5.5.0",
     "react-inner-image-zoom": "^3.0.2",
     "react-owl-carousel": "^2.3.3",
@@ -60,6 +61,8 @@
     "swiper": "^11.2.2",
     "swiper-react": "^1.0.0",
     "swr": "^2.3.2",
+    "thai-address-database": "^0.0.30",
+    "thai-address-universal": "^2.1.1",
     "yup": "^1.6.1"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import { IProductCart } from "@/types/product/productType";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { checkProductStock } from "../thunk/cartCustomThunks";
 
 export interface CounterState {
   items: IProductCart[];
@@ -20,6 +21,17 @@ const initialState: CounterState = {
 export const cartCustomSlice = createSlice({
   name: "cartCustom",
   initialState,
+  extraReducers: (builder) => {
+    builder.addCase(checkProductStock.fulfilled, (state, action) => {
+      state.items.map((el) => {
+        const stock = action.payload.find((item) => item.id == el.id);
+        el.quantity = stock.quantity;
+      });
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cartProducts", JSON.stringify(state.items));
+      }
+    });
+  },
   reducers: {
     setItems(state, action: PayloadAction<IProductCart[]>) {
       state.items = action.payload;
@@ -73,10 +85,13 @@ export const cartCustomSlice = createSlice({
       state.orders = action.payload;
     },
     clearCart: (state) => {
+      console.log("i in in ini nin in in in");
+
       state.items = [];
       if (typeof window !== "undefined") {
         localStorage.setItem("cartProducts", JSON.stringify(state.items));
       }
+      console.log("dfsfds");
     },
     toggleSwitch: (state) => {
       state.isSwitchOn = !state.isSwitchOn;
@@ -86,6 +101,11 @@ export const cartCustomSlice = createSlice({
     },
     updateItemQuantity: (state, action) => {
       state.items = action.payload;
+    },
+    clearCartItem: (state) => {
+      console.log("ininininin");
+
+      // state.items = [];
     },
   },
 });
@@ -100,6 +120,8 @@ export const {
   clearCart,
   toggleSwitch,
   updateItemQuantity,
+  clearCartItem,
+  // checkStock,
 } = cartCustomSlice.actions;
 
 export default cartCustomSlice.reducer;

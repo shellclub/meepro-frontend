@@ -10,6 +10,10 @@ import Link from "next/link";
 import { IProductCart } from "@/types/product/productType";
 import { CommonHelper } from "@/helper/common-helper";
 import QuantitySelectorCustom from "../quantity-selector/QuantitySelectorCustom";
+import { checkProductStock } from "@/store/thunk/cartCustomThunks";
+import { useAppDispatch } from "@/store/hook/hook";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 interface Country {
   id: string;
@@ -28,17 +32,16 @@ const Cart = ({
   hasPaginate = false,
   onError = () => {},
 }) => {
+  const router = useRouter();
   const cartItems = useSelector((state: RootState) => state.cartCustom.items);
-  const dispatch = useDispatch();
+
+  const dispatch = useAppDispatch();
   const [filteredCountryData, setFilteredCountryData] = useState<Country[]>([]);
   const [filteredStateData, setFilteredStateData] = useState<State[]>([]);
   const [loadingStates, setLoadingStates] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
   const [vat, setVat] = useState(0);
   const [discount, setDiscount] = useState(0);
-
-  console.log(cartItems);
-
   const { data: country } = useSWR("/api/country", fetcher, {
     onSuccess,
     onError,
@@ -56,25 +59,9 @@ const Cart = ({
     }
   }, [country]);
 
-  const handleCountryChange = async (e: any) => {
-    const { value } = e.target;
-    setLoadingStates(true);
-    const response = await fetcher(`/api/state`, {
-      country_code: value,
-    });
-    setLoadingStates(false);
-    setFilteredStateData(
-      response.map((state: any) => ({
-        id: state.id,
-        StateName: state.name,
-        state_code: state.state_code,
-      }))
-    );
-  };
-
-  const handleStateChange = async (e: any) => {
-    const { value, options, selectedIndex } = e.target;
-    const stateName = options[selectedIndex].text;
+  const handleCheckStock = () => {
+    const ids = cartItems.map((item) => item.id);
+    dispatch(checkProductStock(ids));
   };
 
   useEffect(() => {
@@ -83,9 +70,9 @@ const Cart = ({
       setVat(0);
       return;
     }
-
+    handleCheckStock();
     const subtotal = cartItems.reduce(
-      (acc, item) => acc + item.newPrice * item.quantity,
+      (acc, item) => acc + item.newPrice * item.productQuantityCart,
       0
     );
     setSubTotal(subtotal);
@@ -102,8 +89,6 @@ const Cart = ({
   const total = subTotal + vat - discountAmount;
 
   const handleRemoveFromCart = (item: any) => {
-    console.log(item);
-
     dispatch(removeItem(item.id));
   };
 
@@ -122,6 +107,17 @@ const Cart = ({
     else return data;
   };
 
+  const handleCheckStockBeforeCheckout = async () => {
+    handleCheckStock();
+    const outOfStockItems = cartItems.filter(
+      (item) => item.quantity === 0 || item.quantity < item.productQuantityCart
+    );
+    if (outOfStockItems.length > 0) {
+      toast.error(`โปรดตรวจสอบจำนวนสินค้าที่ต้องการสั่งซื้อ`);
+    } else {
+      router.push("/checkout");
+    }
+  };
   return (
     <>
       <section className="gi-cart-section padding-tb-40">
@@ -141,138 +137,6 @@ const Cart = ({
             </div>
           ) : (
             <div className="row">
-              {/* <!-- Sidebar Area Start --> */}
-              {/* <div className="gi-cart-rightside col-lg-4 col-md-12">
-                <div className="gi-sidebar-wrap">
-                  <div className="gi-sidebar-block">
-                    <div className="gi-sb-title">
-                      <h3 className="gi-sidebar-title">Summary</h3>
-                    </div>
-                    <div className="gi-sb-block-content">
-                      <h4 className="gi-ship-title">Estimate Shipping</h4>
-                      <div className="gi-cart-form">
-                        <p>Enter your destination to get a shipping estimate</p>
-                        <form action="#" method="post">
-                          <span className="gi-cart-wrap">
-                            <label>Country *</label>
-
-                            <span className="gi-cart-select-inner">
-                              <select
-                                name="gi_cart_country"
-                                id="gi-cart-select-country"
-                                className="gi-cart-select"
-                                defaultValue=""
-                                onChange={handleCountryChange}
-                              >
-                                <option value="" disabled>
-                                  Country
-                                </option>
-                                {filteredCountryData.map(
-                                  (country: any, index: number) => (
-                                    <option key={index} value={country.iso2}>
-                                      {country.countryName}
-                                    </option>
-                                  )
-                                )}
-                              </select>
-                            </span>
-                          </span>
-                          <span className="gi-cart-wrap">
-                            <label>State/Province</label>
-                            <span className="gi-cart-select-inner">
-                              <select
-                                name="state"
-                                id="gi-select-state"
-                                className="gi-register-select"
-                                onChange={handleStateChange}
-                              >
-                                <option value="" disabled>
-                                  Region/State
-                                </option>
-                                {loadingStates ? (
-                                  <option disabled>Loading...</option>
-                                ) : (
-                                  filteredStateData.map((state: any, index) => (
-                                    <option
-                                      key={index}
-                                      value={state.state_code}
-                                    >
-                                      {state.StateName}
-                                    </option>
-                                  ))
-                                )}
-                              </select>
-                            </span>
-                          </span>
-                          <span className="gi-cart-wrap">
-                            <label>Zip/Postal Code</label>
-                            <input
-                              type="text"
-                              name="postalcode"
-                              placeholder="Zip/Postal Code"
-                            />
-                          </span>
-                        </form>
-                      </div>
-                    </div>
-
-                    <div className="gi-sb-block-content">
-                      <div className="gi-cart-summary-bottom">
-                        <div className="gi-cart-summary">
-                          <div>
-                            <span className="text-left">Sub-Total</span>
-                            <span className="text-right">
-                              ${subTotal.toFixed(2)}
-                            </span>
-                          </div>
-                          <div>
-                            <span className="text-left">Delivery Charges</span>
-                            <span className="text-right">
-                              ${vat.toFixed(2)}
-                            </span>
-                          </div>
-                          <div>
-                            <DiscountCoupon
-                              onDiscountApplied={handleDiscountApplied}
-                            />
-                          </div>
-                          <div className="gi-cart-coupan-content">
-                            <form
-                              className="gi-cart-coupan-form"
-                              name="gi-cart-coupan-form"
-                              method="post"
-                              action="#"
-                            >
-                              <input
-                                className="gi-coupan"
-                                type="text"
-                                required
-                                placeholder="Enter Your Coupan Code"
-                                name="gi-coupan"
-                                defaultValue=""
-                              />
-                              <button
-                                className="gi-btn-2"
-                                type="submit"
-                                name="subscribe"
-                                defaultValue=""
-                              >
-                                Apply
-                              </button>
-                            </form>
-                          </div>
-                          <div className="gi-cart-summary-total">
-                            <span className="text-left">ราคา</span>
-                            <span className="text-right">
-                              ${total.toFixed(2)}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
               <div className="gi-cart-leftside col-lg-12 col-md-12 m-t-991">
                 {/* <!-- cart content Start --> */}
                 <div className="gi-cart-content">
@@ -337,9 +201,23 @@ const Cart = ({
                                     >
                                       <div className="cart-qty-plus-minus">
                                         <QuantitySelectorCustom
+                                          stock={item.quantity}
                                           quantity={item.productQuantityCart}
                                           id={item.id || ""}
                                         />
+                                      </div>
+                                      <div
+                                        style={{
+                                          color: "#FF0000",
+                                          fontSize: "0.8rem",
+                                        }}
+                                      >
+                                        {" "}
+                                        {item.quantity <
+                                          item.productQuantityCart &&
+                                          item.quantity != 0 &&
+                                          `จำนวนสินค้าในสต๊อกมีทั้งหมด ${item.quantity} ชิ้น`}
+                                        {item.quantity <= 0 && `สินค้าหมด`}
                                       </div>
                                     </td>
                                     <td
@@ -348,7 +226,7 @@ const Cart = ({
                                     >
                                       ฿
                                       {CommonHelper.formatNumber(
-                                        item.newPrice * item.quantity
+                                        item.newPrice * item.productQuantityCart
                                       )}
                                     </td>
                                     <td
@@ -363,6 +241,18 @@ const Cart = ({
                                   </tr>
                                 )
                               )}
+                              <tr>
+                                <td
+                                  colSpan={4}
+                                  data-label="Total"
+                                  className="gi-cart-pro-name text-end"
+                                >
+                                  ราคารวม
+                                </td>
+                                <td style={{ textAlign: "end" }}>
+                                  {CommonHelper.formatNumber(subTotal)}
+                                </td>
+                              </tr>
                             </tbody>
                           </table>
                         </div>
@@ -370,9 +260,14 @@ const Cart = ({
                           <div className="col-lg-12">
                             <div className="gi-cart-update-bottom">
                               <Link href="/">ซื้อสินค้าต่อ</Link>
-                              <Link href="/checkout" className="gi-btn-2">
+                              <div
+                                onClick={() => {
+                                  handleCheckStockBeforeCheckout();
+                                }}
+                                className="gi-btn-2"
+                              >
                                 สั่งซื้อสินค้า
-                              </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
