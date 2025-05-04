@@ -1,6 +1,5 @@
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
-import OrderPage from '@/components/order-page/Orders'
-
+import OrderCustomPage from '@/components/order-page/OrdersCustom'
 
 
 const page = () => {
@@ -9,7 +8,7 @@ const page = () => {
 
 
             <Breadcrumb title={"My Orders"} />
-            <OrderPage />
+            <OrderCustomPage />
 
         </>
     )

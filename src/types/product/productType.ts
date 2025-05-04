@@ -16,7 +16,7 @@ export interface IProduct {
   brand?: string;
   sku?: string;
   quantity: number;
-  id?: string;
+  id: string;
   description?: string;
   product_id?: string;
   option?: string;
@@ -32,7 +32,10 @@ export interface IProductSearch {
   order?: "asc" | "desc";
   order_field?: string;
 }
-
+export interface IProductStock {
+  id: string;
+  quantity: number;
+}
 export interface IProductById {
   id: string;
   category_id?: string | undefined;
