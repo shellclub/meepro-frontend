@@ -10,6 +10,7 @@ import wishlistSlice from "./reducers/wishlistSlice";
 import compareSlice from "./reducers/compareSlice";
 import stepSlice from "./reducers/stepSlice";
 import filterReducer from "./reducers/filterReducer";
+import filterCustomReducer from "./reducers/filterCustomReducer";
 import themeSlice from "./reducers/themeSlice";
 import cartCustomSlice from "./reducers/cartCustomSlice";
 
@@ -21,6 +22,7 @@ const persistConfigWishlist = { key: "wishlist", storage };
 const persistConfigCompare = { key: "compare", storage };
 const persistConfigStep = { key: "step", storage };
 const persistConfigFilter = { key: "filter", storage };
+const persistCustomConfigFilter = { key: "filterCustom", storage };
 const persistConfigTheme = { key: "theme", storage };
 
 // Wrap each reducer with persistReducer
@@ -46,6 +48,10 @@ const persistedFilterReducer = persistReducer(
   persistConfigFilter,
   filterReducer
 );
+const persistedFilterCustomReducer = persistReducer(
+  persistCustomConfigFilter,
+  filterCustomReducer
+);
 const persistedThemeReducer = persistReducer(persistConfigTheme, themeSlice);
 
 // Combine reducers
@@ -57,6 +63,7 @@ const rootReducer = combineReducers({
   compare: persistedCompareReducer,
   step: persistedStepReducer,
   filter: persistedFilterReducer,
+  filterCustom: persistedFilterCustomReducer,
   theme: persistedThemeReducer,
 });
 

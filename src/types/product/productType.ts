@@ -114,3 +114,24 @@ export interface IProductImage {
   product_id: string;
   variant_id: string;
 }
+
+export interface IProductFilter {
+  searchTerm?: string;
+  page: number;
+  limit: number;
+  sortOption?: string;
+  category?: string[];
+  brand?: string[];
+  minPrice?: number;
+  maxPrice?: number;
+}
+export interface IProductDataFilter {
+  product: IProduct[];
+  meta: IPagination;
+}
+export interface IPagination {
+  totalCount: number;
+  totalPage: number;
+  currentPage: number;
+  limit: number;
+}

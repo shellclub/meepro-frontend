@@ -119,7 +119,8 @@ function HeaderManu() {
                               marginBottom: "10px",
                             }}
                           >
-                            <i className="fi fi-ts-popcorn"></i>ผลิตภัณฑ์อาหารเสริม
+                            <i className="fi fi-ts-popcorn"></i>
+                            ผลิตภัณฑ์อาหารเสริม
                           </button>
                         </Tab>
                         <Tab>
@@ -303,10 +304,15 @@ function HeaderManu() {
                       <ul>
                         <li className="non-drop">
                           <Link href="/">
-                          <i className="fi fi-rr-home"></i>หน้าแรก
+                            <i className="fi fi-rr-home"></i>หน้าแรก
                           </Link>
                         </li>
-                        <li className="dropdown drop-list position-static">
+                        <li className="non-drop">
+                          <Link href="/product">
+                            <i className="fi fi-rr-cat"></i>สินค้าทั้งหมด
+                          </Link>
+                        </li>
+                        {/* <li className="dropdown drop-list position-static">
                           <Link href="" className="dropdown-arrow">
                             สินค้าทั้งหมด
                             <i className="fi-rr-angle-small-right"></i>
@@ -356,7 +362,7 @@ function HeaderManu() {
                               </ul>
                             </li>
                           </ul>
-                        </li>
+                        </li> */}
                         <li className="dropdown drop-list">
                           <Link href="" className="dropdown-arrow">
                             แบรนด์<i className="fi-rr-angle-small-right"></i>
@@ -398,12 +404,12 @@ function HeaderManu() {
                         </li>
                         <li className="dropdown drop-list">
                           <Link href="">
-                          <i className="fi fi-rr-info"></i> เกี่ยวกับเรา
-                          </Link>                   
+                            <i className="fi fi-rr-info"></i> เกี่ยวกับเรา
+                          </Link>
                         </li>
                         <li className="non-drop">
                           <Link href="">
-                          <i className="fi fi-rr-id-badge"></i>โปรโมชั่น
+                            <i className="fi fi-rr-id-badge"></i>โปรโมชั่น
                           </Link>
                         </li>
                         <li className="non-drop">

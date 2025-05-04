@@ -15,7 +15,7 @@ const PriceRangeSlider: React.FC<PriceRangeSliderProps> = ({
   max,
   onPriceChange,
 }) => {
-  const { range } = useSelector((state: RootState) => state.filter);
+  const { range } = useSelector((state: RootState) => state.filterCustom);
   const sliderRef = useRef<any | null>(null);
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const PriceRangeSlider: React.FC<PriceRangeSliderProps> = ({
           id="gi-sliderPrice"
           className="filter__slider-price"
           data-min="0"
-          data-max="250"
+          data-max="10000"
           data-step="10"
         ></div>
       </div>
