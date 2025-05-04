@@ -12,14 +12,13 @@ import {
   setRange,
   setSearchTerm,
   setSelectedCategory,
-  setSelectedColor,
-  setSelectedTags,
-  setSelectedWeight,
+  setSelectedBrands,
   setSortOption,
-} from "@/store/reducers/filterReducer";
+} from "@/store/reducers/filterCustomReducer";
 import Paginantion from "../paginantion/Paginantion";
 import SidebarAreaCustom from "./sidebar-area/SidebarAreaCustom";
 import useGetProduct from "@/hooks/product/useGetProduct";
+import useGetProductFilter from "@/hooks/product/useGetProductFilter";
 
 const ShopCustom = ({
   xl = 4,
@@ -34,15 +33,13 @@ const ShopCustom = ({
   const dispatch = useDispatch();
   const {
     selectedCategory,
-    selectedWeight,
+    selectedBrands,
     sortOption,
     minPrice,
     maxPrice,
     range,
     searchTerm,
-    selectedColor,
-    selectedTags,
-  } = useSelector((state: RootState) => state.filter);
+  } = useSelector((state: RootState) => state.filterCustom);
   const itemsPerPage = 12;
 
   const postData = useMemo(
@@ -55,9 +52,6 @@ const ShopCustom = ({
       minPrice,
       maxPrice,
       range,
-      selectedWeight,
-      selectedColor,
-      selectedTags,
     }),
     [
       searchTerm,
@@ -68,17 +62,22 @@ const ShopCustom = ({
       minPrice,
       maxPrice,
       range,
-      selectedWeight,
-      selectedColor,
-      selectedTags,
     ]
   );
 
-  // const { data, error } = useSWR(
-  //   ["/api/shopitem", postData],
-  //   ([url, postData]) => fetcher(url, postData)
-  // );
-  const { data, isLoading: loading, refetch, error } = useGetProduct({});
+  const {
+    data,
+    isLoading: loading,
+    refetch,
+    error,
+  } = useGetProductFilter({
+    maxPrice: maxPrice,
+    minPrice: minPrice,
+    limit: 12,
+    page: currentPage,
+    category: selectedCategory,
+    sortOption: sortOption,
+  });
 
   const toggleView = (isGrid: any) => {
     setIsGridView(isGrid);
@@ -110,30 +109,6 @@ const ShopCustom = ({
       ? selectedCategory.filter((cat) => cat !== category)
       : [...selectedCategory, category];
     dispatch(setSelectedCategory(updatedCategory));
-    setCurrentPage(1);
-  };
-
-  const handleWeightChange = (weight) => {
-    const updatedweight = selectedWeight.includes(weight)
-      ? selectedWeight.filter((wet) => wet !== weight)
-      : [weight];
-    dispatch(setSelectedWeight(updatedweight));
-    setCurrentPage(1);
-  };
-
-  const handleColorChange = (color) => {
-    const updatedcolor = selectedColor.includes(color)
-      ? selectedColor.filter((clr) => clr !== color)
-      : [...selectedColor, color];
-    dispatch(setSelectedColor(updatedcolor));
-    setCurrentPage(1);
-  };
-
-  const handleTagsChange = (tag) => {
-    const updatedtag = selectedTags.includes(tag)
-      ? selectedTags.filter((tg) => tg !== tag)
-      : [...selectedTags, tag];
-    dispatch(setSelectedTags(updatedtag));
     setCurrentPage(1);
   };
 
@@ -182,14 +157,14 @@ const ShopCustom = ({
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    Sort by
+                    เรียงจาก
                   </option>
-                  <option value="1">Position</option>
+                  {/* <option value="1">Position</option>
                   <option value="2">Relevance</option>
                   <option value="3">Name, A to Z</option>
-                  <option value="4">Name, Z to A</option>
-                  <option value="5">Price, low to high</option>
-                  <option value="6">Price, high to low</option>
+                  <option value="4">Name, Z to A</option> */}
+                  <option value="price_asc">ราคา: จากน้อยไปมาก</option>
+                  <option value="price_desc">ราคา: จากมากไปน้อย</option>
                 </select>
               </div>
             </div>
@@ -207,7 +182,7 @@ const ShopCustom = ({
             >
               <div className={`shop-pro-inner ${list}`}>
                 <Row>
-                  {data?.map((item: any, index: any) => (
+                  {data?.product.map((item: any, index: any) => (
                     <ShopProductItem
                       isGridView={isGridView}
                       xl={xl}
@@ -219,7 +194,7 @@ const ShopCustom = ({
                 </Row>
               </div>
               {/* <!-- Pagination Start --> */}
-              {!data.length ? (
+              {!data.product.length ? (
                 <div
                   style={{ textAlign: "center" }}
                   className="gi-pro-content cart-pro-title"
@@ -230,18 +205,17 @@ const ShopCustom = ({
                 <div className="gi-pro-pagination">
                   <span>
                     Showing {(currentPage - 1) * itemsPerPage + 1}-
-                    {Math.min(currentPage * itemsPerPage)} of {data.length}{" "}
-                    item(s)
+                    {Math.min(currentPage * itemsPerPage)} of{" "}
+                    {data.meta?.totalCount} item(s)
                   </span>
 
                   <Paginantion
                     currentPage={currentPage}
-                    totalPages={10}
+                    totalPages={data.meta?.totalPage}
                     onPageChange={handlePageChange}
                   />
                 </div>
               )}
-
               {/* <!-- Pagination End --> */}
             </div>
           )}
@@ -252,16 +226,10 @@ const ShopCustom = ({
 
         <SidebarAreaCustom
           handleCategoryChange={handleCategoryChange}
-          handleWeightChange={handleWeightChange}
-          handleColorChange={handleColorChange}
-          handleTagsChange={handleTagsChange}
           min={minPrice}
           max={maxPrice}
           handlePriceChange={handlePriceChange}
-          selectedWeight={selectedWeight}
           selectedCategory={selectedCategory}
-          selectedColor={selectedColor}
-          selectedTags={selectedTags}
           order={order}
         />
       </Row>

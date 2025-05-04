@@ -11,26 +11,16 @@ import useGetCategory from "@/hooks/common-data/useGetCategory";
 
 const SidebarAreaCustom = ({
   handleCategoryChange,
-  handleWeightChange,
-  handleColorChange,
-  handleTagsChange,
-  selectedColor,
-  selectedTags,
   selectedCategory,
-  selectedWeight,
   closeFilter,
   handlePriceChange,
   min,
   max,
   isFilterOpen,
-  onSuccess = () => {},
-  onError = () => {},
-  hasPaginate = false,
   order = "order-md-last order-lg-first",
   none = "",
 }: any) => {
   const router = useRouter();
-  const pathname = usePathname();
   const [showButton, setShowButton] = useState(true);
 
   const [isOpen, setIsOpen] = useState({
@@ -105,7 +95,7 @@ const SidebarAreaCustom = ({
   //   const colorValue = getColorData();
   //   const tagsData = getTagData();
 
-  const { data: categoryData, isLoading: loading, refetch } = useGetCategory();
+  const { data: categoryData } = useGetCategory();
 
   const renderIcon = (category: string) => {
     switch (category) {
@@ -132,10 +122,6 @@ const SidebarAreaCustom = ({
       default:
         return null;
     }
-  };
-
-  const handleFilterBtn = () => {
-    router.push("/shop-left-sidebar-col-3");
   };
 
   const toggleDropdown = (section: any) => {

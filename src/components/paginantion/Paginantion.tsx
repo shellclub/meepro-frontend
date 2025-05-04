@@ -30,18 +30,21 @@ const Paginantion: React.FC<PaginationProps> = ({
       }
 
       pageNumbers.push(1);
-      if (startPage > 2) pageNumbers.push("...");
+      console.log("push start", pageNumbers);
+      // if (startPage > 2) pageNumbers.push("...");
       for (let i = startPage; i <= endPage; i++) {
         pageNumbers.push(i);
       }
-      if (endPage < totalPages - 1) pageNumbers.push("...");
+      // if (endPage < totalPages - 1) pageNumbers.push("...");
       pageNumbers.push(totalPages);
     }
 
-    return pageNumbers;
+    return [...new Set(pageNumbers)];
   };
 
   const pageNumbers = getPageNumbers();
+
+  console.log(pageNumbers);
 
   return (
     <>
@@ -52,7 +55,7 @@ const Paginantion: React.FC<PaginationProps> = ({
             className={`next ${currentPage === 1 ? "disabled" : ""}`}
             href="#"
           >
-            Prev
+            ก่อนหน้า
           </a>
         </li>
 
@@ -82,7 +85,7 @@ const Paginantion: React.FC<PaginationProps> = ({
             className={`next ${currentPage === totalPages ? "disabled" : ""}`}
             href="#"
           >
-            Next <i className="gicon gi-angle-right"></i>
+            ถัดไป <i className="gicon gi-angle-right"></i>
           </a>
         </li>
       </ul>

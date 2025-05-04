@@ -1,4 +1,4 @@
-import { IProductSearch } from "@/types/product/productType";
+import { IProductFilter, IProductSearch } from "@/types/product/productType";
 import axiosServices, { isAxiosError } from "@/utility/axios";
 
 const basePath = "/products/data";
@@ -38,6 +38,21 @@ export const getProductDataStockByListIdApi = async (id: string[]) => {
       id: id,
     };
     const res = await axiosServices.post(`${basePath}/check-stock`, payload);
+    return res?.data.data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      console.error(err);
+      throw Promise.reject(err);
+    } else {
+      console.error(err);
+      throw Promise.reject(err);
+    }
+  }
+};
+
+export const getProductFilterApi = async (search: IProductFilter) => {
+  try {
+    const res = await axiosServices.post(`${basePath}/filter`, search);
     return res?.data.data;
   } catch (err) {
     if (isAxiosError(err)) {

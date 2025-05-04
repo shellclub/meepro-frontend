@@ -13,6 +13,7 @@ function page({}: Props) {
       <section className="gi-shop padding-tb-40">
         <div className="container">
           {/* <CategoryBanner /> */}
+
           <ShopCustom
             order={"order-lg-last order-md-first"}
             lg={9}
