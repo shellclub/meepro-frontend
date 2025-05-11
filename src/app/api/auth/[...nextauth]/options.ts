@@ -20,6 +20,34 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 24 * 60 * 60, // 1 day
   },
+  cookies: {
+    callbackUrl: {
+      name: "app_meepro_shop_callback_url", // ✅ redirect path after login/logout
+      options: {
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+    csrfToken: {
+      name: "app_meepr_shop_csrf_token", // ✅ CSRF protection token
+      options: {
+        httpOnly: false, // must be accessible via JS
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+    sessionToken: {
+      name: "app_meepro_shop_session_token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user && "data" in user) {
@@ -52,23 +80,23 @@ export const authOptions: NextAuthOptions = {
             headers: { "Content-Type": "application/json" },
           }
         );
+
         const user: LoginResponse = await res.json();
 
         if (!res.ok || !user.data) {
-          throw new Error("Invalid username or password");
+          throw new Error(user.message || "Invalid username or password");
         }
 
         const setCookieHeader = res.headers.get("Set-Cookie");
         if (setCookieHeader) {
           const token = setCookieHeader.split(";")[0].split("=")[1];
           (await cookies()).set({
-            name: "access_token",
+            name: "app_meepro_shop_access_token",
             value: token,
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
           });
         }
-
         return user; // Must return user data for NextAuth to store in JWT
       },
     }),

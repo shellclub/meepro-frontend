@@ -1,3 +1,4 @@
+import { IUser } from "./../user/userType";
 import { IUserAddress } from "../user/userType";
 
 export interface IOrder {

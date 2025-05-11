@@ -5,6 +5,45 @@ export interface ICreateUser {
   phone?: string;
   password: string;
   confirmPassword: string;
+  role_id: number;
+  customer_type_id: number;
+  address_type: string;
+  address: string;
+  sub_district?: string;
+  district?: string;
+  province?: string;
+  postal_code?: string;
+  recipient_name?: string;
+  recipient_phone?: string;
+  is_primary?: boolean;
+}
+
+export interface ICreateUserB2B {
+  store_name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone?: string;
+  password: string;
+  confirmPassword: string;
+  role_id: number;
+  customer_type_id: number;
+  attachment: IUserB2BAttachment[];
+  address: IUserB2BAddress[];
+}
+
+export interface IUserB2BAttachment {
+  file: File | null;
+  description: string;
+}
+export interface IUserB2BAddress {
+  address?: string;
+  sub_district?: string;
+  district?: string;
+  province?: string;
+  postal_code?: string;
+  is_register?: boolean;
+  is_contact?: boolean;
 }
 
 export interface IUserAddress {

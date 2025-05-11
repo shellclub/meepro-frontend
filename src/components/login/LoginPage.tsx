@@ -1,96 +1,37 @@
 "use client";
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import { useRouter } from "next/navigation";
 import { Container, Form } from "react-bootstrap";
-import { showErrorToast, showSuccessToast } from "../toast-popup/Toastify";
+
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/store/reducers/registrationSlice";
 import { RootState } from "@/store";
 
-import { getSession, signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
-const md5 = require("md5");
-interface Registration {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-  city: string;
-  postCode: string;
-  country: string;
-  state: string;
-  password: string;
-  uid: any;
-}
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [validated, setValidated] = useState(false);
   const router = useRouter();
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.registration.isAuthenticated
-  );
-
-  useEffect(() => {
-    const storedRegistrations = JSON.parse(
-      localStorage.getItem("registrationData") || "[]"
-    );
-    setRegistrations(storedRegistrations);
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/");
-    }
-  }, [isAuthenticated, router]);
-
-  // const handleLogin = (e: any) => {
-  //   e.preventDefault();
-
-  //   const form = e.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     e.stopPropagation();
-  //   }
-
-  //   const foundUser = registrations.find(
-  //     (user) => user.email === email && user.password === password
-  //   );
-
-  //   if (foundUser) {
-  //     const userData = { uid: foundUser.uid, email, password };
-  //     localStorage.setItem("login_user", JSON.stringify(userData));
-  //     dispatch(login(foundUser));
-  //     showSuccessToast("User Login Success");
-  //   } else {
-  //     showErrorToast("Invalid email or password");
-  //   }
-
-  //   setValidated(true);
-  // };
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    const passwordHash = md5(password);
     const res = await signIn("credentials", {
       username: email,
-      password: passwordHash,
+      password: password,
       redirect: false,
-      // callbackUrl: "/",
     });
+
     if (res?.error) {
-      toast.error("ลงชื่อเข้าใช่ไม่สำเร็จ");
+      toast.error(res.error);
     } else {
       toast.success("ลงชื่อเข้าใช่สำเร็จ");
       router.push("/home");
     }
   };
-
   return (
     <>
       <Breadcrumb title={"Login Page"} />
@@ -139,7 +80,7 @@ const LoginPage = () => {
                           <Form.Control
                             type="password"
                             name="password"
-                            min={6}
+                            min={8}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="กรุณากรอกรหัสผ่านของคุณ"
