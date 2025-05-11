@@ -20,34 +20,34 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 24 * 60 * 60, // 1 day
   },
-  cookies: {
-    callbackUrl: {
-      name: "app_meepro_shop_callback_url", // ✅ redirect path after login/logout
-      options: {
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-    csrfToken: {
-      name: "app_meepr_shop_csrf_token", // ✅ CSRF protection token
-      options: {
-        httpOnly: false, // must be accessible via JS
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-    sessionToken: {
-      name: "app_meepro_shop_session_token",
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-  },
+  // cookies: {
+  //   callbackUrl: {
+  //     name: "app_meepro_shop_callback_url", // ✅ redirect path after login/logout
+  //     options: {
+  //       sameSite: "lax",
+  //       path: "/",
+  //       secure: process.env.NODE_ENV === "production",
+  //     },
+  //   },
+  //   csrfToken: {
+  //     name: "app_meepr_shop_csrf_token", // ✅ CSRF protection token
+  //     options: {
+  //       httpOnly: false, // must be accessible via JS
+  //       sameSite: "lax",
+  //       path: "/",
+  //       secure: process.env.NODE_ENV === "production",
+  //     },
+  //   },
+  //   sessionToken: {
+  //     name: "app_meepro_shop_session_token",
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "lax",
+  //       path: "/",
+  //       secure: process.env.NODE_ENV === "production",
+  //     },
+  //   },
+  // },
   callbacks: {
     async jwt({ token, user }) {
       if (user && "data" in user) {
