@@ -49,13 +49,12 @@ function HeaderTwo({ cartItems, wishlistItems }) {
   const handleLogout = () => {
     sessionStorage.clear();
     localStorage.clear();
-    signOut({
-      callbackUrl: "/home",
-      redirect: true,
-    });
     localStorage.removeItem("login_user");
     dispatch(logout());
-    router.push("/");
+    signOut({
+      callbackUrl: "/home",
+      redirect: false,
+    });
   };
 
   return (
@@ -147,13 +146,19 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                       ) : (
                         <>
                           <li>
-                            <Link className="dropdown-item" href="/register">
-                              สมัครเข้าใช้งาน
+                            <Link
+                              className="dropdown-item"
+                              href="/register/b2c"
+                            >
+                              สมัครเข้าใช้งานลูกค้าทั่วไป
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" href="/checkout">
-                              Checkout
+                            <Link
+                              className="dropdown-item"
+                              href="/register/b2b"
+                            >
+                              สมัครเข้าใช้งานลูกค้าธุรกิจ
                             </Link>
                           </li>
                           <li>

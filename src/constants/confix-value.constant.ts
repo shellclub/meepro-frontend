@@ -62,3 +62,21 @@ export const PAYMENT_METHOD = {
     description: "ชำระเงินผ่านการโอนเข้าบัญชีธนาคาร",
   },
 };
+
+export const USER_ROLE = {
+  CUSTOMER: {
+    ROLE_ID: 2,
+    LABEL: "ลูกค้า",
+  },
+};
+
+export const CUSTOMER_TYPE = {
+  B2B: {
+    TYPE_ID: 1,
+    TYPE_NAME: "ขายส่ง (B2B)",
+  },
+  B2C: {
+    TYPE_ID: 2,
+    TYPE_NAME: "ลูกค้าทั่วไป",
+  },
+};
