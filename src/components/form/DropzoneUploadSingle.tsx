@@ -78,7 +78,7 @@ const DropzoneUploadSingle: FC<DropzoneUploadSingleProps> = ({
           position="absolute"
           bottom={0}
           right={12}
-          onClick={(e) => e.stopPropagation()} // prevent triggering file input
+          onClick={(e) => e.stopPropagation()}
         >
           <Link
             href={previewUrl}
