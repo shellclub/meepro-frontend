@@ -2,9 +2,16 @@ import { IProductFilter, IProductSearch } from "@/types/product/productType";
 import axiosServices, { isAxiosError } from "@/utility/axios";
 
 const basePath = "/products/data";
-export const getProductApi = async (search: IProductSearch) => {
+export const getProductApi = async (
+  search: IProductSearch,
+  userType?: string
+) => {
   try {
-    const res = await axiosServices.post(`${basePath}`, search);
+    let path = "";
+    if (userType && userType == "B2B") {
+      path = "/b2b";
+    }
+    const res = await axiosServices.post(`${basePath}${path}`, search);
     return res?.data.data;
   } catch (err) {
     if (isAxiosError(err)) {
@@ -50,9 +57,16 @@ export const getProductDataStockByListIdApi = async (id: string[]) => {
   }
 };
 
-export const getProductFilterApi = async (search: IProductFilter) => {
+export const getProductFilterApi = async (
+  search: IProductFilter,
+  userType?: string
+) => {
   try {
-    const res = await axiosServices.post(`${basePath}/filter`, search);
+    let path = "";
+    if (userType && userType == "B2B") {
+      path = "/b2b";
+    }
+    const res = await axiosServices.post(`${basePath}/filter${path}`, search);
     return res?.data.data;
   } catch (err) {
     if (isAxiosError(err)) {

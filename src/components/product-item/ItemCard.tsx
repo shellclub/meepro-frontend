@@ -12,6 +12,7 @@ import { showSuccessToast } from "../toast-popup/Toastify";
 import { RootState } from "@/store";
 import { addWishlist, removeWishlist } from "@/store/reducers/wishlistSlice";
 import { addCompare, removeCompareItem } from "@/store/reducers/compareSlice";
+import { CommonHelper } from "@/helper/common-helper";
 
 interface Item {
   id: number | string;
@@ -139,7 +140,7 @@ const ItemCard = ({ data }: any) => {
                 )}
               </span>
               <div className="gi-pro-actions">
-                <button
+                {/* <button
                   onClick={() => handleWishlist(data)}
                   className={
                     "gi-btn-group wishlist " +
@@ -148,8 +149,8 @@ const ItemCard = ({ data }: any) => {
                   title="Wishlist"
                 >
                   <i className="fi-rr-heart"></i>
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   className="gi-btn-group quickview gi-cart-toggle"
                   data-link-action="quickview"
                   title="Quick view"
@@ -158,8 +159,8 @@ const ItemCard = ({ data }: any) => {
                   onClick={handleShow}
                 >
                   <i className="fi-rr-eye"></i>
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   onClick={() => handleCompareItem(data)}
                   className={
                     "gi-btn-group compare " +
@@ -168,7 +169,7 @@ const ItemCard = ({ data }: any) => {
                   title="Compare"
                 >
                   <i className="fi fi-rr-arrows-repeat"></i>
-                </button>
+                </button> */}
                 <button
                   title="Add To Cart"
                   className="gi-btn-group add-to-cart"
@@ -233,13 +234,18 @@ const ItemCard = ({ data }: any) => {
                 <span className="qty">{data.weight}</span>
               </span>
               <span className="gi-price">
-                <span className="new-price">${data.newPrice}.00</span>
-                <span className="old-price">${data.oldPrice}.00</span>
+                <span className="new-price">
+                  ฿{CommonHelper.formatNumber(data.newPrice)}
+                </span>
+                <span className="old-price">
+                  {" "}
+                  ฿{CommonHelper.formatNumber(data.oldPrice)}
+                </span>
               </span>
             </div>
           </div>
         </div>
-        <QuickViewModal data={data} handleClose={handleClose} show={show} />
+        {/* <QuickViewModal data={data} handleClose={handleClose} show={show} /> */}
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import Spinner from "../button/Spinner";
 import useGetProduct from "@/hooks/product/useGetProduct";
 import { IProduct, IProductSearch } from "@/types/product/productType";
 import ProductItemCard from "./ProductItemCard";
+import { useSession } from "next-auth/react";
 
 function ProductAll(search: IProductSearch) {
   // const { data, error } = useSwr(url, fetcher, {
@@ -36,7 +37,12 @@ function ProductAll(search: IProductSearch) {
   //   else return data;
   // };
 
-  const { data, isLoading: loading, refetch } = useGetProduct(search);
+  const session = useSession();
+  const {
+    data,
+    isLoading: loading,
+    refetch,
+  } = useGetProduct(search, session.data?.user.customer_type.code);
   if (loading)
     return (
       <div>

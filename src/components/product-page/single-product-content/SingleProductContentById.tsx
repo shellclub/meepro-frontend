@@ -191,8 +191,16 @@ const SingleProductContentById = ({
         image: productVarian.main_image,
         imageTwo: productVarian.main_image,
         category: productData.category?.name,
-        newPrice: Number(productVarian?.price_3 ?? 0),
-        oldPrice: Number(productVarian?.price_3 ?? 0),
+        newPrice: Number(
+          session.user.customer_type.code == "B2B"
+            ? productVarian.price_2 ?? 0
+            : productVarian?.price_3 ?? 0
+        ),
+        oldPrice: Number(
+          session.user.customer_type.code == "B2B"
+            ? productVarian.price_2 ?? 0
+            : productVarian?.price_3 ?? 0
+        ),
         location: PRODUCT_LOCATION.ONLINE,
         brand: productData.brand?.name,
         sku: productVarian?.sku_id,
@@ -250,7 +258,19 @@ const SingleProductContentById = ({
                       className="single-slide zoom-image-hover"
                       onClick={() => handleSlider1Click(idx)}
                     >
-                      <ZoomImage src={item.file_path} alt={""} />
+                      {/* <ZoomImage src={item.file_path} alt={""} /> */}
+                      <img
+                        className="img-responsive"
+                        src={item.file_path}
+                        height={400}
+                        width={400}
+                        alt=""
+                        // style={{
+                        //   width: "100%",
+                        //   height: "auto",
+                        //   maxWidth: "450px",
+                        // }}
+                      />
                     </div>
                   ))}
                 </Slider>
@@ -268,6 +288,8 @@ const SingleProductContentById = ({
                       <img
                         className="img-responsive"
                         src={item.file_path}
+                        height={70}
+                        width={70}
                         alt=""
                       />
                     </div>
@@ -295,7 +317,10 @@ const SingleProductContentById = ({
               <div className="gi-single-price-stoke">
                 <div className="gi-single-price">
                   <div className="final-price">
-                    ฿{selectedVariant?.price_3 || ""}
+                    ฿
+                    {session?.user.customer_type.code == "B2B"
+                      ? selectedVariant?.price_2 || ""
+                      : selectedVariant?.price_3 || ""}
                     <span className="price-des">-10%</span>
                   </div>
 

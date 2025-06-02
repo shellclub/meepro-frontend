@@ -154,7 +154,7 @@ const ProductItemCard = ({ data }: { data: IProduct }) => {
                 >
                   <i className="fi-rr-heart"></i>
                 </button> */}
-                <button
+                {/* <button
                   className="gi-btn-group quickview gi-cart-toggle"
                   data-link-action="quickview"
                   title="Quick view"
@@ -163,7 +163,7 @@ const ProductItemCard = ({ data }: { data: IProduct }) => {
                   onClick={handleShow}
                 >
                   <i className="fi-rr-eye"></i>
-                </button>
+                </button> */}
                 {/* <button
                   onClick={() => handleCompareItem(data)}
                   className={

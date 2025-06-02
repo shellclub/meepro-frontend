@@ -5,10 +5,10 @@ import {
 } from "@/types/product/productType";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetProductFilter = (search: IProductFilter) => {
+const useGetProductFilter = (search: IProductFilter, userType?: string) => {
   return useQuery<IProductDataFilter, Error>({
     queryKey: ["GET_PRODUCT", search],
-    queryFn: async () => await getProductFilterApi(search),
+    queryFn: async () => await getProductFilterApi(search, userType),
   });
 };
 

@@ -10,12 +10,9 @@ import DealendTimer from "../dealend-timer/DealendTimer";
 import Spinner from "../button/Spinner";
 import useGetProduct from "@/hooks/product/useGetProduct";
 import ProductItemCard from "../product-item/ProductItemCard";
+import { useSession } from "next-auth/react";
 
-const Deal = ({
-  onSuccess = () => {},
-  hasPaginate = false,
-  onError = () => {},
-}) => {
+const Deal = () => {
   // const { data, error } = useSWR("/api/deal", fetcher, { onSuccess, onError });
 
   // if (error) return <div>Failed to load products</div>;
@@ -24,7 +21,13 @@ const Deal = ({
   //   if (hasPaginate) return data.data;
   //   else return data;
   // };
-  const { data, isLoading: loading, refetch } = useGetProduct({ limit: 10 });
+
+  const session = useSession();
+  const {
+    data,
+    isLoading: loading,
+    refetch,
+  } = useGetProduct({ limit: 10 }, session.data?.user.customer_type.code);
   if (loading)
     return (
       <div>

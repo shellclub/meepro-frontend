@@ -11,7 +11,13 @@ const ZoomImage = ({ src, alt }) => {
         alt={alt}
         zoomType="hover"
         zoomPreload={true}
-        style={{ cursor: "zoom-in" }}
+        // style={{ cursor: "zoom-in" }}
+        style={{
+          width: "100px",
+          height: "100px",
+          // objectFit: "contain",
+          cursor: "zoom-in",
+        }}
         hideHint={false}
       />
     </div>

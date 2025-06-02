@@ -7,7 +7,7 @@ const CategoryItem = ({ data }) => {
       <span className="gi-lbl">{data.persantine}</span>
       <i className={data.icon}></i>
       <div className="gi-cat-detail">
-        <Link href="/shop-left-sidebar-col-3">
+        <Link href="/product">
           <h4 className="gi-cat-title">{data.name}</h4>
         </Link>
         <p className="items">{data.item} Items</p>

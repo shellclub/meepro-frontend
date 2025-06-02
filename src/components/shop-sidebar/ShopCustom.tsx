@@ -19,6 +19,7 @@ import Paginantion from "../paginantion/Paginantion";
 import SidebarAreaCustom from "./sidebar-area/SidebarAreaCustom";
 import useGetProduct from "@/hooks/product/useGetProduct";
 import useGetProductFilter from "@/hooks/product/useGetProductFilter";
+import { useSession } from "next-auth/react";
 
 const ShopCustom = ({
   xl = 4,
@@ -28,6 +29,7 @@ const ShopCustom = ({
   className = "padding-tb-40",
   isList = false,
 }) => {
+  const { data: session } = useSession();
   const [currentPage, setCurrentPage] = useState(1);
   const [isGridView, setIsGridView] = useState(false);
   const dispatch = useDispatch();
@@ -70,14 +72,17 @@ const ShopCustom = ({
     isLoading: loading,
     refetch,
     error,
-  } = useGetProductFilter({
-    maxPrice: maxPrice,
-    minPrice: minPrice,
-    limit: 12,
-    page: currentPage,
-    category: selectedCategory,
-    sortOption: sortOption,
-  });
+  } = useGetProductFilter(
+    {
+      maxPrice: maxPrice,
+      minPrice: minPrice,
+      limit: 12,
+      page: currentPage,
+      category: selectedCategory,
+      sortOption: sortOption,
+    },
+    session?.user.customer_type.code
+  );
 
   const toggleView = (isGrid: any) => {
     setIsGridView(isGrid);
