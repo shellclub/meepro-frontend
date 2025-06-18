@@ -64,7 +64,16 @@ function HeaderTwo({ cartItems, wishlistItems }) {
       <div className="gi-header-bottom d-lg-block">
         <div className="container position-relative">
           <div className="row">
-            <div className="gi-flex">
+            <div
+              className="gi-flex"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "1rem",
+                width: "100%",
+              }}
+            >
               {/* <!-- Header Logo Start --> */}
               <div className="align-self-center gi-header-logo">
                 <div className="header-logo">
@@ -80,35 +89,18 @@ function HeaderTwo({ cartItems, wishlistItems }) {
                 </div>
               </div>
               {/* <!-- Header Logo End -->
-                        <!-- Header Search Start --> */}
-             <div className="gi-header-search" style={{ flex: "1 1 300px", maxWidth: 600 }}>
+            {/* <!-- Header Search Start --> */}
+              <div>
                 <SearchAutocomplete
-                  className="form-control gi-search-bar"
-                  placeholder="ค้นหาสินค้า..."
                   value={searchInput}
                   onChange={handleSearch}
-                  style={{ flexGrow: 1, minWidth: 300 }}
+                  onSubmit={handleSubmit}
+                  SearchIcon={SearchIcon}
+                  placeholder="ค้นหาสินค้า, แบรนด์, หรือหมวดหมู่..."
                 />
-
-                <form onSubmit={handleSubmit} style={{ margin: 0 }}>
-                  <button
-                    className="search_submit btn"
-                    type="submit"
-                    style={{
-                      padding: "0.5rem 1rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                    aria-label="Search"
-                  >
-                    <SearchIcon />
-                  </button>
-                </form>
               </div>
-
-              {/* <!-- Header Search End -->
-                        <!-- Header Button Start --> */}
+              {/* <!-- Header Search End --> */}
+              {/* <!-- Header Button Start --> */}
               <div className="gi-header-action align-self-center">
                 <div className="gi-header-bottons">
                   {/* <!-- Header User Start --> */}
