@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ShopProductItem from "../product-item/ShopProductItem";
 import { Col, Row } from "react-bootstrap";
 import SidebarFilter from "../model/SidebarFilter";
+import SearchAutocomplete from "../search/SearchAutoComplete"; 
 import useSWR from "swr";
 import fetcher from "../fetcher-api/Fetcher";
 import Spinner from "../button/Spinner";
@@ -214,7 +215,7 @@ const FullWidth = ({
                 >
                   Products is not found.
                 </div>
-              ) : (
+              ) : ( 
                 <div className="gi-pro-pagination">
                   <span>
                     Showing {(currentPage - 1) * itemsPerPage + 1}-

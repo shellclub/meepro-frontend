@@ -32,15 +32,27 @@ function sortData(filteredData: any[], sortOption: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const { searchTerm = '', sortOption = '1', page = 1, limit = 10, selectedCategory = [], selectedWeight = [], selectedColor = [], selectedTags = [],   range = { min: 0, max: 250 }  } = await req.json();
+  const {
+    searchTerm = "",
+    sortOption = "1",
+    page = 1,
+    limit = 10,
+    selectedCategory = [],
+    selectedWeight = [],
+    selectedColor = [],
+    selectedTags = [],
+    range = { min: 0, max: 250 },
+  } = await req.json();
 
   const currentPage = parseInt(page as string, 10);
   const itemsPerPage = parseInt(limit as string, 10);
 
-  let filteredData = Shop.filter(item =>
-    item.category.toLowerCase().includes(searchTerm.toLowerCase())  &&
-    item.newPrice >= range.min &&
-    item.newPrice <= range.max
+  let filteredData = Shop.filter(
+    (item) =>
+      (item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      item.newPrice >= range.min &&
+      item.newPrice <= range.max
   );
 
   if (selectedCategory.length > 0) {
@@ -55,16 +67,16 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  if(selectedColor.length > 0) {
-    filteredData = filteredData.filter((item) => 
+  if (selectedColor.length > 0) {
+    filteredData = filteredData.filter((item) =>
       selectedColor.includes(item.color)
     );
   }
 
-  if(selectedTags.length > 0) {
+  if (selectedTags.length > 0) {
     filteredData = filteredData.filter((item) =>
-      selectedTags.includes(item.tags) 
-    )
+      selectedTags.includes(item.tags)
+    );
   }
 
   const sortedData = sortData(filteredData, sortOption);

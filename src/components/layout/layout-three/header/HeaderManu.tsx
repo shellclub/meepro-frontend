@@ -305,7 +305,7 @@ const HeaderManu = () => {
                 <form className="gi-search-group-form" action="#">
                   <input
                     className="form-control gi-search-bar"
-                    placeholder="Search Products..."
+                    placeholder="Search Products Jaaa..."
                     type="text"
                   />
                   <button className="search_submit" type="submit">

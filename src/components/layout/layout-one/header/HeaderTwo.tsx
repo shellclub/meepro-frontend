@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SidebarCart from "../../../model/SidebarCart";
+import SearchAutocomplete from "../../../search/SearchAutoComplete";
+import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store";
@@ -79,26 +81,32 @@ function HeaderTwo({ cartItems, wishlistItems }) {
               </div>
               {/* <!-- Header Logo End -->
                         <!-- Header Search Start --> */}
-              <div className="align-self-center gi-header-search">
-                <div className="header-search">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="gi-search-group-form"
-                    action="#"
+             <div className="gi-header-search" style={{ flex: "1 1 300px", maxWidth: 600 }}>
+                <SearchAutocomplete
+                  className="form-control gi-search-bar"
+                  placeholder="ค้นหาสินค้า..."
+                  value={searchInput}
+                  onChange={handleSearch}
+                  style={{ flexGrow: 1, minWidth: 300 }}
+                />
+
+                <form onSubmit={handleSubmit} style={{ margin: 0 }}>
+                  <button
+                    className="search_submit btn"
+                    type="submit"
+                    style={{
+                      padding: "0.5rem 1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    aria-label="Search"
                   >
-                    <input
-                      className="form-control gi-search-bar"
-                      placeholder="Search Products..."
-                      type="text"
-                      value={searchInput}
-                      onChange={handleSearch}
-                    />
-                    <button className="search_submit" type="submit">
-                      <i className="fi-rr-search"></i>
-                    </button>
-                  </form>
-                </div>
+                    <SearchIcon />
+                  </button>
+                </form>
               </div>
+
               {/* <!-- Header Search End -->
                         <!-- Header Button Start --> */}
               <div className="gi-header-action align-self-center">
